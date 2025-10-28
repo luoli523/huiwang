@@ -35,7 +35,7 @@
   const volumeControl = document.getElementById('volume-control');
   const volumeDisplay = document.getElementById('volume-display');
   const closeBtn = document.getElementById('close-music-btn');
-  const musicPanel = document.querySelector('div[style*="position: fixed"]');
+  const musicPanel = document.getElementById('toggle-music-btn').closest('div[style*="position: fixed"]');
   
   let isPlaying = false; // 初始状态为未播放
   let isMinimized = false;
