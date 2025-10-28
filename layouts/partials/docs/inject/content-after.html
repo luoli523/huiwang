@@ -91,13 +91,6 @@
     volumeDisplay.textContent = this.value + '%';
   });
   
-  // 关闭按钮 - 完全隐藏播放面板
-  closeBtn.addEventListener('click', function() {
-    musicPanel.style.display = 'none';
-    player.pause(); // 关闭时暂停音乐
-    isPlaying = false;
-  });
-  
   // 添加一个小的浮动按钮来重新显示播放面板
   const showMusicBtn = document.createElement('button');
   showMusicBtn.innerHTML = '🎵';
@@ -105,17 +98,22 @@
   showMusicBtn.title = '显示音乐控制';
   document.body.appendChild(showMusicBtn);
   
+  // 显示浮动按钮
   showMusicBtn.addEventListener('click', function() {
     musicPanel.style.display = 'block';
     showMusicBtn.style.display = 'none';
   });
   
-  // 当播放面板被隐藏时，显示浮动按钮
+  // 关闭按钮 - 完全隐藏播放面板
   closeBtn.addEventListener('click', function() {
+    musicPanel.style.display = 'none';
+    player.pause(); // 关闭时暂停音乐
+    isPlaying = false;
+    toggleBtn.textContent = '▶'; // 更新按钮状态
+    
+    // 延迟显示浮动按钮
     setTimeout(() => {
-      if (musicPanel.style.display === 'none') {
-        showMusicBtn.style.display = 'block';
-      }
+      showMusicBtn.style.display = 'block';
     }, 300);
   });
   
