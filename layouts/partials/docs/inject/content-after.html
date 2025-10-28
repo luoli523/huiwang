@@ -1,5 +1,5 @@
 <!-- 背景音乐播放器控制面板 -->
-<div style="position: fixed; bottom: 20px; right: 20px; z-index: 1000; background: rgba(255, 255, 255, 0.95); border-radius: 15px; padding: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); min-width: 250px;">
+<div id="music-player-panel" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000; background: rgba(255, 255, 255, 0.95); border-radius: 15px; padding: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); min-width: 250px;">
   <div style="display: flex; align-items: center; gap: 12px;">
     <!-- 播放/暂停按钮 -->
     <button id="toggle-music-btn" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 50%; width: 45px; height: 45px; cursor: pointer; font-size: 18px; box-shadow: 0 2px 8px rgba(102, 126, 234, 0.4); transition: all 0.3s;" title="播放/暂停音乐">⏸</button>
@@ -35,7 +35,7 @@
   const volumeControl = document.getElementById('volume-control');
   const volumeDisplay = document.getElementById('volume-display');
   const closeBtn = document.getElementById('close-music-btn');
-  const musicPanel = document.getElementById('toggle-music-btn').closest('div[style*="position: fixed"]');
+  const musicPanel = document.getElementById('music-player-panel');
   
   let isPlaying = false; // 初始状态为未播放
   let isMinimized = false;
