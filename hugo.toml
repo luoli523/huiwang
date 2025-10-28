@@ -3,3 +3,20 @@ languageCode = 'zh-cn'
 title = '回望灯火阑珊'
 theme = 'ananke'
 #theme = 'hugo-book'
+
+# Ananke theme configuration
+[params]
+  font = "Merriweather Sans"
+  
+[menu]
+  [[menu.main]]
+    identifier = "about"
+    name = "关于"
+    url = "/about/"
+    weight = 1
+  
+  [[menu.main]]
+    identifier = "posts"
+    name = "博客"
+    url = "/posts/"
+    weight = 2
