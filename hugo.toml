@@ -1,5 +1,5 @@
 baseURL = 'https://luoli523.github.io/huiwang/'
 languageCode = 'zh-cn'
 title = '回望灯火阑珊'
-#theme = 'ananke'
-theme = 'hugo-book'
+theme = 'ananke'
+#theme = 'hugo-book'

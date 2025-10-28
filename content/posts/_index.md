@@ -1,6 +1,7 @@
 ---
-menu:
-  after:
-    weight: 5
-title: Blog
+title: "博客文章"
+date: 2024-01-01
 ---
+
+这里是博客文章列表。
+
