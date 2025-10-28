@@ -3,6 +3,10 @@ languageCode = 'zh-cn'
 title = '回望灯火阑珊'
 theme = 'hugo-book'
 
+# Markdown configuration
+[markup.goldmark.renderer]
+unsafe = true
+
 # Hugo Book theme configuration
 [params]
   BookSearch = true
