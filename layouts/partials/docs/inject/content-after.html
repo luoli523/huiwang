@@ -1,5 +1,5 @@
 <!-- 背景音乐播放器控制面板 -->
-<div id="music-player-panel" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000; background: rgba(255, 255, 255, 0.95); border-radius: 15px; padding: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); min-width: 250px;">
+<div id="music-player-panel" style="position: fixed; top: 20px; right: 20px; z-index: 1000; background: rgba(255, 255, 255, 0.95); border-radius: 15px; padding: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); min-width: 250px;">
   <div style="display: flex; align-items: center; gap: 12px;">
     <!-- 播放/暂停按钮 -->
     <button id="toggle-music-btn" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 50%; width: 45px; height: 45px; cursor: pointer; font-size: 18px; box-shadow: 0 2px 8px rgba(102, 126, 234, 0.4); transition: all 0.3s;" title="播放/暂停音乐">⏸</button>
@@ -94,7 +94,7 @@
   // 添加一个小的浮动按钮来重新显示播放面板
   const showMusicBtn = document.createElement('button');
   showMusicBtn.innerHTML = '🎵';
-  showMusicBtn.style.cssText = 'position: fixed; bottom: 20px; right: 20px; z-index: 999; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 50%; width: 50px; height: 50px; cursor: pointer; font-size: 20px; box-shadow: 0 2px 8px rgba(102, 126, 234, 0.4); display: none; transition: all 0.3s;';
+  showMusicBtn.style.cssText = 'position: fixed; top: 20px; right: 20px; z-index: 999; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 50%; width: 50px; height: 50px; cursor: pointer; font-size: 20px; box-shadow: 0 2px 8px rgba(102, 126, 234, 0.4); display: none; transition: all 0.3s;';
   showMusicBtn.title = '显示音乐控制';
   document.body.appendChild(showMusicBtn);
   
