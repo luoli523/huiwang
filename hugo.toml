@@ -1,25 +1,15 @@
 baseURL = 'https://luoli523.github.io/huiwang/'
 languageCode = 'zh-cn'
 title = '回望灯火阑珊'
-theme = 'ananke'
-#theme = 'hugo-book'
+theme = 'hugo-book'
 
-# Ananke theme configuration
+# Hugo Book theme configuration
 [params]
-  font = "Merriweather Sans"
-  show_recent_posts = true
-  recent_posts_number = 5
-  mainSections = ["posts"]
-
-[menu]
-  [[menu.main]]
-    identifier = "about"
-    name = "关于"
-    url = "/about/"
-    weight = 1
+  BookSearch = true
+  BookComments = false
+  BookMenuBundle = "menu"
   
-  [[menu.main]]
-    identifier = "posts"
-    name = "博客"
-    url = "/posts/"
-    weight = 2
+  [[params.menuBookBeforeEntry]]
+    name = "开始阅读"
+    weight = 1
+    url = "/docs/"
