@@ -5,9 +5,11 @@
     <button id="toggle-music-btn" style="background: rgba(0, 0, 0, 0.5); color: white; border: none; border-radius: 50%; width: 40px; height: 40px; cursor: pointer; font-size: 18px;" title="播放/暂停音乐">⏸</button>
   </div>
   
-  <audio id="background-music" loop preload="auto" volume="0.3" autoplay>
+  <audio id="background-music" loop preload="none" volume="0.3">
     <!-- 使用MP3格式，将你的音乐文件命名为 background.mp3 并放在 static/music/ 目录下 -->
-    <source src="{{ "/music/background.mp3" | relURL }}" type="audio/mpeg">
+    <source src="/huiwang/music/background.mp3" type="audio/mpeg">
+    <!-- 兼容性提示 -->
+    你的浏览器不支持音频播放
   </audio>
 </div>
 
@@ -20,31 +22,36 @@
   
   // 尝试自动播放
   function tryAutoplay() {
+    // 设置初始音量
+    player.volume = 0.3;
+    
     const playPromise = player.play();
     
     if (playPromise !== undefined) {
       playPromise
         .then(() => {
           // 自动播放成功
-          console.log('音乐自动播放成功');
+          console.log('🎵 音乐自动播放成功');
+          isPlaying = true;
+          toggleBtn.textContent = '⏸';
         })
         .catch(error => {
           // 自动播放被阻止（浏览器策略）
-          console.log('自动播放被阻止，需要用户交互');
+          console.log('⚠️ 自动播放被阻止:', error);
           isPlaying = false;
           toggleBtn.textContent = '▶';
+          console.log('👆 请点击左下角按钮手动播放');
         });
     }
   }
-  
-  // 设置初始音量
-  player.volume = 0.3;
   
   // 页面加载后尝试自动播放
   if (document.readyState === 'complete') {
     tryAutoplay();
   } else {
-    window.addEventListener('load', tryAutoplay);
+    window.addEventListener('load', function() {
+      setTimeout(tryAutoplay, 500); // 延迟500ms确保DOM完全加载
+    });
   }
   
   // 切换播放/暂停
