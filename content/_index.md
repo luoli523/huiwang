@@ -18,7 +18,7 @@ date: 2025-10-16
     <td style="padding: 10px; border-bottom: 1px solid #eee;"><strong>第1-10章</strong></td>
     <td style="padding: 10px; border-bottom: 1px solid #eee;"><strong>第11-20章</strong></td>
     <td style="padding: 10px; border-bottom: 1px solid #eee;"><strong>第21-30章</strong></td>
-    <td style="padding: 10px; border-bottom: 1px solid #eee;"><strong>第31-34章</strong></td>
+    <td style="padding: 10px; border-bottom: 1px solid #eee;"><strong>第31-36章</strong></td>
   </tr>
   <tr>
     <td style="padding: 8px;">
@@ -50,18 +50,20 @@ date: 2025-10-16
       <a href="/huiwang/docs/22-惠芳的麻烦/">22. 惠芳的麻烦</a><br>
       <a href="/huiwang/docs/23-加州旅馆/">23. 加州旅馆</a><br>
       <a href="/huiwang/docs/24-考研屋家教/">24. 考研屋家教</a><br>
-      <a href="/huiwang/docs/25-圣诞节/">25. 圣诞节</a><br>
-      <a href="/huiwang/docs/26-大考来临/">26. 大考来临</a><br>
-      <a href="/huiwang/docs/27-走出考场/">27. 走出考场</a><br>
-      <a href="/huiwang/docs/28-考上了/">28. 考上了</a><br>
-      <a href="/huiwang/docs/29-考研屋的传承/">29. 考研屋的传承</a><br>
-      <a href="/huiwang/docs/30-长城上的牵手/">30. 长城上的牵手</a>
+      <a href="/huiwang/docs/25-熊孩子不熊/">25. 熊孩子不熊</a><br>
+      <a href="/huiwang/docs/26-圣诞节/">26. 圣诞节</a><br>
+      <a href="/huiwang/docs/27-大考来临/">27. 大考来临</a><br>
+      <a href="/huiwang/docs/28-走出考场/">28. 走出考场</a><br>
+      <a href="/huiwang/docs/29-考上了/">29. 考上了</a><br>
+      <a href="/huiwang/docs/30-考研屋的传承/">30. 考研屋的传承</a>
     </td>
     <td style="padding: 8px;">
-      <a href="/huiwang/docs/31-入学/">31. 入学</a><br>
-      <a href="/huiwang/docs/32-初入职场/">32. 初入职场</a><br>
-      <a href="/huiwang/docs/33-唐晚的婚讯/">33. 唐晚的婚讯</a><br>
-      <a href="/huiwang/docs/34-徐皙男友来访/">34. 徐皙男友来访</a>
+      <a href="/huiwang/docs/31-长城上的牵手/">31. 长城上的牵手</a><br>
+      <a href="/huiwang/docs/32-再见浩翔/">32. 再见浩翔</a><br>
+      <a href="/huiwang/docs/33-入学/">33. 入学</a><br>
+      <a href="/huiwang/docs/34-初入职场/">34. 初入职场</a><br>
+      <a href="/huiwang/docs/35-唐晚的婚讯/">35. 唐晚的婚讯</a><br>
+      <a href="/huiwang/docs/36-徐皙男友来访/">36. 徐皙男友来访</a>
     </td>
   </tr>
 </table>
