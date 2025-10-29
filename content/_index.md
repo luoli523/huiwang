@@ -55,7 +55,7 @@ date: 2025-10-16
       <a href="/huiwang/docs/27-走出考场/">27. 走出考场</a><br>
       <a href="/huiwang/docs/28-考上了/">28. 考上了</a><br>
       <a href="/huiwang/docs/29-考研屋的传承/">29. 考研屋的传承</a><br>
-      <a href="/huiwang/docs/30-慕田峪长城/">30. 慕田峪长城</a>
+      <a href="/huiwang/docs/30-长城上的牵手/">30. 长城上的牵手</a>
     </td>
     <td style="padding: 8px;">
       <a href="/huiwang/docs/31-入学/">31. 入学</a><br>
