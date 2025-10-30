@@ -54,12 +54,12 @@ date: 2025-10-16
       <a href="/huiwang/docs/26-圣诞节/">26. 圣诞节</a><br>
       <a href="/huiwang/docs/27-大考来临/">27. 大考来临</a><br>
       <a href="/huiwang/docs/28-走出考场/">28. 走出考场</a><br>
-      <a href="/huiwang/docs/29-考上了/">29. 考上了</a><br>
-      <a href="/huiwang/docs/30-考研屋的传承/">30. 考研屋的传承</a>
+      <a href="/huiwang/docs/29-长城上的牵手/">29. 长城上的牵手</a><br>
+      <a href="/huiwang/docs/30-考上了/">30. 考上了</a>
     </td>
     <td style="padding: 8px;">
-      <a href="/huiwang/docs/31-长城上的牵手/">31. 长城上的牵手</a><br>
-      <a href="/huiwang/docs/32-再见浩翔/">32. 再见浩翔</a><br>
+      <a href="/huiwang/docs/31-再见浩翔/">31. 再见浩翔</a><br>
+      <a href="/huiwang/docs/32-考研屋的传承/">32. 考研屋的传承</a><br>
       <a href="/huiwang/docs/33-入学/">33. 入学</a><br>
       <a href="/huiwang/docs/34-初入职场/">34. 初入职场</a><br>
       <a href="/huiwang/docs/35-唐晚的婚讯/">35. 唐晚的婚讯</a><br>
