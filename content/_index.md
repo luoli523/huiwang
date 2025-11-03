@@ -18,7 +18,7 @@ date: 2025-10-16
     <td style="padding: 10px; border-bottom: 1px solid #eee;"><strong>第1-10章</strong></td>
     <td style="padding: 10px; border-bottom: 1px solid #eee;"><strong>第11-20章</strong></td>
     <td style="padding: 10px; border-bottom: 1px solid #eee;"><strong>第21-30章</strong></td>
-    <td style="padding: 10px; border-bottom: 1px solid #eee;"><strong>第31-36章</strong></td>
+    <td style="padding: 10px; border-bottom: 1px solid #eee;"><strong>第31-37章</strong></td>
   </tr>
   <tr>
     <td style="padding: 8px;">
@@ -54,16 +54,17 @@ date: 2025-10-16
       <a href="/huiwang/docs/26-圣诞节/">26. 圣诞节</a><br>
       <a href="/huiwang/docs/27-大考来临/">27. 大考来临</a><br>
       <a href="/huiwang/docs/28-走出考场/">28. 走出考场</a><br>
-      <a href="/huiwang/docs/29-长城上的牵手/">29. 长城上的牵手</a><br>
-      <a href="/huiwang/docs/30-考上了/">30. 考上了</a>
+      <a href="/huiwang/docs/29-大考后的平静/">29. 大考后的平静</a><br>
+      <a href="/huiwang/docs/30-长城上的牵手/">30. 长城上的牵手</a>
     </td>
     <td style="padding: 8px;">
-      <a href="/huiwang/docs/31-再见浩翔/">31. 再见浩翔</a><br>
-      <a href="/huiwang/docs/32-考研屋的传承/">32. 考研屋的传承</a><br>
-      <a href="/huiwang/docs/33-入学/">33. 入学</a><br>
-      <a href="/huiwang/docs/34-初入职场/">34. 初入职场</a><br>
-      <a href="/huiwang/docs/35-唐晚的婚讯/">35. 唐晚的婚讯</a><br>
-      <a href="/huiwang/docs/36-意外来访/">36. 意外来访</a>
+      <a href="/huiwang/docs/31-考上了/">31. 考上了</a><br>
+      <a href="/huiwang/docs/32-再见浩翔/">32. 再见浩翔</a><br>
+      <a href="/huiwang/docs/33-考研屋的传承/">33. 考研屋的传承</a><br>
+      <a href="/huiwang/docs/34-入学/">34. 入学</a><br>
+      <a href="/huiwang/docs/35-初入职场/">35. 初入职场</a><br>
+      <a href="/huiwang/docs/36-唐晚的婚讯/">36. 唐晚的婚讯</a><br>
+      <a href="/huiwang/docs/37-意外来访/">37. 意外来访</a>
     </td>
   </tr>
 </table>
