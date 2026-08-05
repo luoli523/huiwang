@@ -1,0 +1,47 @@
+{{ define "main" }}
+{{ $chapters := sort (where site.RegularPages "Section" "docs") "Weight" }}
+{{ $isChapter := eq .Section "docs" }}
+{{ $name := replaceRE `^\s*[0-9]+\s*[.、．]\s*` "" .Title }}
+
+{{/* 相邻章节按 weight 取，而不是 Hugo 默认的日期顺序 */}}
+{{ $prev := false }}{{ $next := false }}{{ $hit := false }}
+{{ range $chapters }}
+  {{ if $hit }}{{ if not $next }}{{ $next = . }}{{ end }}
+  {{ else if eq .RelPermalink $.RelPermalink }}{{ $hit = true }}
+  {{ else }}{{ $prev = . }}{{ end }}
+{{ end }}
+
+<article class="chapter" data-chapter="{{ .Title }}">
+  <header class="chapter__head">
+    {{ if $isChapter }}<p class="chapter__ord">第 {{ .Weight }} 章</p>{{ end }}
+    <h1 class="chapter__title">{{ $name }}</h1>
+    <p class="chapter__meta">
+      {{ if $isChapter }}{{ lang.FormatNumber 0 .WordCount }} 字 · 约 {{ .ReadingTime }} 分钟{{ end }}
+    </p>
+    <div class="chapter__rule" aria-hidden="true">❖</div>
+  </header>
+
+  <div class="chapter__body prose">
+    {{ .Content }}
+  </div>
+
+  <footer class="chapter__foot">
+    <div class="chapter__endmark" aria-hidden="true">❖</div>
+    <nav class="chapnav">
+      {{ with $prev }}
+      <a class="chapnav__item chapnav__item--prev" href="{{ .RelPermalink }}" rel="prev">
+        <span class="chapnav__label">上一章</span>
+        <span class="chapnav__name">{{ replaceRE `^\s*[0-9]+\s*[.、．]\s*` "" .Title }}</span>
+      </a>
+      {{ else }}<span class="chapnav__item is-empty"></span>{{ end }}
+      {{ with $next }}
+      <a class="chapnav__item chapnav__item--next" href="{{ .RelPermalink }}" rel="next">
+        <span class="chapnav__label">下一章</span>
+        <span class="chapnav__name">{{ replaceRE `^\s*[0-9]+\s*[.、．]\s*` "" .Title }}</span>
+      </a>
+      {{ else }}<span class="chapnav__item is-empty"></span>{{ end }}
+    </nav>
+    <p class="chapter__back"><a href="{{ "" | relURL }}#toc">回到目录</a></p>
+  </footer>
+</article>
+{{ end }}

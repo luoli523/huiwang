@@ -1,0 +1,32 @@
+{{- /*
+  章节目录。variant = "toc"（首页印刷体目录）或 "drawer"（侧栏抽屉）
+  待续章节（正文为占位）不给链接，只留一个淡出的「待续」标记。
+*/ -}}
+{{- $ctx := .ctx -}}
+{{- $variant := .variant | default "toc" -}}
+{{- $chapters := where site.RegularPages "Section" "docs" -}}
+<ol class="toc toc--{{ $variant }}">
+{{- range sort $chapters "Weight" -}}
+  {{- $name := replaceRE `^\s*[0-9]+\s*[.、．]\s*` "" .Title -}}
+  {{- $stub := strings.Contains .Plain "本章节内容待更新" -}}
+  {{- $note := strings.Contains .Plain "暂时到此为止" -}}
+  {{- $current := and $ctx.IsPage (eq $ctx.RelPermalink .RelPermalink) -}}
+  <li class="toc__item{{ if $stub }} is-stub{{ end }}{{ if $note }} is-note{{ end }}{{ if $current }} is-current{{ end }}">
+    {{- if $stub -}}
+    <span class="toc__link" aria-disabled="true">
+      <span class="toc__num">{{ printf "%02d" .Weight }}</span>
+      <span class="toc__name">{{ $name }}</span>
+      <span class="toc__dots"></span>
+      <span class="toc__tail">待续</span>
+    </span>
+    {{- else -}}
+    <a class="toc__link" href="{{ .RelPermalink }}">
+      <span class="toc__num">{{ printf "%02d" .Weight }}</span>
+      <span class="toc__name">{{ $name }}{{ if $note }}<em class="toc__tag">作者附记</em>{{ end }}</span>
+      <span class="toc__dots"></span>
+      <span class="toc__tail">{{ if $note }}—{{ else }}{{ lang.FormatNumber 0 .WordCount }} 字{{ end }}</span>
+    </a>
+    {{- end -}}
+  </li>
+{{- end -}}
+</ol>

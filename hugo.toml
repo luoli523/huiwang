@@ -1,19 +1,30 @@
 baseURL = 'https://luoli523.github.io/huiwang/'
 languageCode = 'zh-cn'
 title = '回望灯火阑珊'
-theme = 'hugo-book'
+
+# 中文按字计数，字数与阅读时长才准
+hasCJKLanguage = true
+
+# 小说站不需要分类/标签页（注意：顶层键必须写在任何 [table] 之前）
+disableKinds = ['taxonomy', 'term']
+
+# 自建版面：layouts/ 下是本站专属模板，不再依赖外部主题。
+# themes/ 里的 submodule 已不参与构建。
+# theme = 'hugo-book'
+
+[params]
+  author = 'luoli523'
+  subtitle = '2005，北京，一间十平米的考研屋'
+  cover = 'images/cover-your-wedding.jpg'
+  description = '一部关于2005年北京、北河沿考研屋与一群年轻人的长篇小说。'
+  # 右下角背景音乐，默认不播放，需手动点亮
+  bgm = 'music/background.mp3'
+  bgmTitle = '加州旅馆 · Hotel California'
 
 # Markdown configuration
 [markup.goldmark.renderer]
-unsafe = true
+  unsafe = true
 
-# Hugo Book theme configuration
-[params]
-  BookSearch = true
-  BookComments = false
-  BookMenuBundle = "menu"
-  
-  [[params.menuBookBeforeEntry]]
-    name = "开始阅读"
-    weight = 1
-    url = "/docs/"
+# 首页额外输出 JSON 全文索引，供目录抽屉里的检索使用（RSS 保留）
+[outputs]
+  home = ['HTML', 'RSS', 'JSON']

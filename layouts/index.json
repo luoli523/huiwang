@@ -1,0 +1,12 @@
+{{- $out := slice -}}
+{{- range sort (where site.RegularPages "Section" "docs") "Weight" -}}
+  {{- if not (strings.Contains .Plain "本章节内容待更新") -}}
+    {{- $name := replaceRE `^\s*[0-9]+\s*[.、．]\s*` "" .Title -}}
+    {{- /* .Plain 保留 &ldquo; 一类实体，必须先解码，否则摘要里露出源码 */ -}}
+    {{- $plain := .Plain | htmlUnescape | replaceRE `\s+` " " | chomp -}}
+    {{- /* 正文首行的 “17.西门烤翅” 与标题重复，摘要里去掉 */ -}}
+    {{- $plain = strings.TrimPrefix (printf "%d.%s " .Weight $name) $plain -}}
+    {{- $out = $out | append (dict "n" .Weight "t" $name "u" .RelPermalink "c" $plain) -}}
+  {{- end -}}
+{{- end -}}
+{{- $out | jsonify -}}

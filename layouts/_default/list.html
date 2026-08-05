@@ -1,0 +1,26 @@
+{{ define "main" }}
+{{ if eq .Section "docs" }}
+<section class="toc-section toc-section--page">
+  <header class="section-head">
+    <p class="jacket__kicker">回望灯火阑珊</p>
+    <h1 class="section-title">{{ .Title }}</h1>
+    {{ $s := partial "stats.html" . }}
+    <p class="section-note">拟 {{ $s.total }} 章 · 已成稿 {{ $s.written }} 章</p>
+    {{ with .Content }}<div class="section-lede prose">{{ . }}</div>{{ end }}
+  </header>
+  {{ partial "chapter-list.html" (dict "ctx" . "variant" "toc") }}
+</section>
+{{ else }}
+{{/* 关于一类的普通页：正文左对齐，宽度比章节页宽一点，好放表格 */}}
+<article class="page">
+  <header class="page__head">
+    <h1 class="page__title">{{ .Title }}</h1>
+    <div class="chapter__rule" aria-hidden="true">❖</div>
+  </header>
+  <div class="page__body prose">
+    {{ .Content }}
+  </div>
+  <p class="chapter__back"><a href="{{ "" | relURL }}#toc">回到目录</a></p>
+</article>
+{{ end }}
+{{ end }}

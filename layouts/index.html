@@ -1,0 +1,49 @@
+{{ define "main" }}
+{{ $chapters := sort (where site.RegularPages "Section" "docs") "Weight" }}
+{{ $first := index $chapters 0 }}
+
+<section class="jacket">
+  <div class="jacket__type">
+    <h1 class="jacket__title"><span class="v">回望灯火阑珊</span></h1>
+    <div class="jacket__lines">
+      <p class="jacket__kicker">长篇小说</p>
+      <p class="jacket__sub">{{ site.Params.subtitle }}</p>
+      <p class="jacket__byline">{{ site.Params.author }} 著</p>
+
+      {{ with .Content }}<div class="jacket__epigraph">{{ . }}</div>{{ end }}
+
+      <div class="jacket__actions">
+        <a class="btn btn--solid" href="{{ $first.RelPermalink }}">开始阅读</a>
+        <a class="btn" href="#toc">目录</a>
+        <a class="btn btn--ghost" id="btn-resume" href="#" hidden>继续读 <span data-resume-title></span></a>
+      </div>
+    </div>
+  </div>
+
+  <figure class="jacket__photo">
+    <div class="jacket__mat">
+      <img src="{{ site.Params.cover | relURL }}" width="1304" height="1490"
+           alt="封面：暖金色调的旧照片拼贴" fetchpriority="high" decoding="async">
+    </div>
+    <figcaption>2005 年秋 — 2006 年春 · 北京 海淀</figcaption>
+  </figure>
+</section>
+
+<section class="bbs" aria-label="故事的起点">
+  <div class="bbs__screen">
+    <p class="bbs__head">bbs.net.tsinghua.edu.cn <span>[社会信息]</span></p>
+    <p class="bbs__post">【招合租】清华西门外北河沿小区，两室一厅，考研党优先。</p>
+    <p class="bbs__sign">发信人：史云涛<span class="bbs__cursor"></span></p>
+  </div>
+  <p class="bbs__note">一切从这一行黑底白字开始。<span>—— 第二章《找合租》</span></p>
+</section>
+
+<section class="toc-section" id="toc">
+  {{ $s := partial "stats.html" . }}
+  <header class="section-head">
+    <h2 class="section-title">目 录</h2>
+    <p class="section-note">拟 {{ $s.total }} 章 · 已成稿 {{ $s.written }} 章</p>
+  </header>
+  {{ partial "chapter-list.html" (dict "ctx" . "variant" "toc") }}
+</section>
+{{ end }}

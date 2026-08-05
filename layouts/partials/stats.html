@@ -1,0 +1,9 @@
+{{- /* 章节统计：total = 规划章数，written = 已成稿（排除占位章与作者附记） */ -}}
+{{- $all := where site.RegularPages "Section" "docs" -}}
+{{- $written := 0 -}}
+{{- range $all -}}
+  {{- if and (not (strings.Contains .Plain "本章节内容待更新")) (not (strings.Contains .Plain "暂时到此为止")) -}}
+    {{- $written = add $written 1 -}}
+  {{- end -}}
+{{- end -}}
+{{- return dict "total" (len $all) "written" $written -}}

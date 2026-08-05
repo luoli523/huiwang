@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light" data-size="m">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} · {{ site.Title }}{{ end }}</title>
+<meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ site.Params.description }}{{ end }}">
+<meta name="author" content="{{ site.Params.author }}">
+<meta name="theme-color" content="#F5EDE1" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#141C29" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }}{{ end }}">
+<meta property="og:type" content="{{ if .IsHome }}book{{ else }}article{{ end }}">
+<meta property="og:image" content="{{ site.Params.cover | absURL }}">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>🪔</text></svg>">
+{{ $css := resources.Get "css/book.css" | resources.Minify | resources.Fingerprint }}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}">
+<script>
+// 首屏前落地偏好，避免主题闪白
+(function(){try{var d=document.documentElement,t=localStorage.getItem('hw-theme'),s=localStorage.getItem('hw-size');
+if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';d.dataset.theme=t;if(s)d.dataset.size=s;}catch(e){}})();
+</script>
+</head>
+<body class="page-{{ .Kind }}">
+
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="topbar">
+  <a class="topbar__title" href="{{ "" | relURL }}">回望灯火阑珊</a>
+  <div class="topbar__tools">
+    <button type="button" class="tool" id="btn-toc" aria-label="目录与检索">
+      <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 5h14M3 10h14M3 15h9"/></svg>
+      <span class="tool__text">目录</span>
+    </button>
+    <button type="button" class="tool" id="btn-size" aria-label="切换字号">
+      <span class="tool__glyph">字</span>
+    </button>
+    <button type="button" class="tool" id="btn-theme" aria-label="切换昼夜">
+      <svg class="i-lamp" viewBox="0 0 20 20" aria-hidden="true">
+        <path d="M10 3a4.5 4.5 0 0 0-2.6 8.2V13h5.2v-1.8A4.5 4.5 0 0 0 10 3Z"/>
+        <path d="M8.2 15h3.6M8.7 17h2.6"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<div class="scrim" id="scrim" hidden></div>
+
+<aside class="drawer" id="drawer" aria-hidden="true">
+  <div class="drawer__head">
+    <span class="drawer__label">目录</span>
+    <button type="button" class="drawer__close" id="btn-close" aria-label="关闭">×</button>
+  </div>
+  <div class="drawer__search">
+    <input type="search" id="q" placeholder="检索全文（人名、地名、一句话）" autocomplete="off" spellcheck="false">
+  </div>
+  <div class="drawer__results" id="results" hidden></div>
+  <div class="drawer__body" id="drawer-toc">
+    {{ partial "chapter-list.html" (dict "ctx" . "variant" "drawer") }}
+  </div>
+</aside>
+
+<main id="main">
+  {{ block "main" . }}{{ end }}
+</main>
+
+<footer class="footer">
+  <div class="footer__rule">❖</div>
+  <p class="footer__line">回望灯火阑珊 · {{ site.Params.author }}</p>
+  {{ $s := partial "stats.html" . }}
+  <p class="footer__meta">拟 {{ $s.total }} 章 · 已成稿 {{ $s.written }} 章</p>
+  <nav class="footer__nav">
+    <a href="{{ "docs/" | relURL }}">目录</a>
+    <a href="{{ "about/" | relURL }}">关于</a>
+  </nav>
+</footer>
+
+{{ with site.Params.bgm }}
+<button type="button" class="bulb" id="btn-bgm" aria-label="背景音乐：{{ site.Params.bgmTitle }}" title="{{ site.Params.bgmTitle }}">
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <path class="bulb__glass" d="M12 2.5a6 6 0 0 0-3.4 10.9V16h6.8v-2.6A6 6 0 0 0 12 2.5Z"/>
+    <path class="bulb__base" d="M9.6 18h4.8M10.3 20.5h3.4"/>
+    <g class="bulb__rays"><path d="M12 .4v1.2"/><path d="M3.6 4.2l.9.9"/><path d="M20.4 4.2l-.9.9"/><path d="M1 12h1.2"/><path d="M21.8 12H23"/></g>
+  </svg>
+</button>
+<audio id="bgm" loop preload="none" src="{{ . | relURL }}"></audio>
+{{ end }}
+
+{{ $js := resources.Get "js/reader.js" | resources.Minify | resources.Fingerprint }}
+<script src="{{ $js.RelPermalink }}" defer data-index="{{ "index.json" | relURL }}"></script>
+</body>
+</html>
