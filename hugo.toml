@@ -21,6 +21,10 @@ disableKinds = ['taxonomy', 'term']
   bgm = 'music/background.mp3'
   bgmTitle = '加州旅馆 · Hotel California'
 
+  # 访问统计：与主站同一 hostname，共用同一个 Cloudflare Web Analytics token
+  [params.analytics.cloudflare]
+    token = '6aaf83fc05e244f88ca89346fb1acdcb'
+
 # Markdown configuration
 [markup.goldmark.renderer]
   unsafe = true

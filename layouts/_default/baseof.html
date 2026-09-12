@@ -19,6 +19,7 @@
 (function(){try{var d=document.documentElement,t=localStorage.getItem('hw-theme'),s=localStorage.getItem('hw-size');
 if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';d.dataset.theme=t;if(s)d.dataset.size=s;}catch(e){}})();
 </script>
+{{ partial "analytics.html" . }}
 </head>
 <body class="page-{{ .Kind }}">
 
