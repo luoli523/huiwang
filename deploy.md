@@ -76,7 +76,7 @@ hugo deploy
 
 ## 验证部署
 
-部署成功后，访问：https://luoli523.github.io/huiwang/
+部署成功后，访问：https://guige.ai/huiwang/
 
 ## 故障排查
 
@@ -84,7 +84,7 @@ hugo deploy
 
 1. 检查 baseURL 配置
    - 确保 `hugo.toml` 中的 `baseURL` 正确
-   - 应该是：`baseURL = 'https://luoli523.github.io/huiwang/'`
+   - 应该是：`baseURL = 'https://guige.ai/huiwang/'`
 
 2. 检查 GitHub Actions 状态
    - 访问：https://github.com/luoli523/huiwang/actions
