@@ -16,3 +16,6 @@ resources/_gen/
 # Temporary files
 *.tmp
 *.log
+
+# Local narration working files (published MP3s live in static/audio/)
+.audio-work/

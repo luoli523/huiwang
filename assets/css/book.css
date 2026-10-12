@@ -734,6 +734,29 @@ a.chapnav__item:hover { border-color: var(--lamp); background: var(--lamp-wash);
 
 .chapter__back { margin: 1.6rem 0 0; text-align: center; font-size: .82em; letter-spacing: .2em; }
 
+/* 本章有声版，沿用纸页和灯色 */
+.chapter-audio {
+  padding: 1rem;
+  margin: 0 0 2rem;
+  border: 1px solid var(--rule);
+  background: var(--paper-2);
+  font: .85rem/1.6 var(--sans);
+}
+.chapter-audio__heading { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem; margin-bottom: .75rem; }
+.chapter-audio__heading > span:first-child { color: var(--lamp-deep); }
+.chapter-audio__credit, .chapter-audio__status { color: var(--ink-soft); }
+.chapter-audio audio { display: block; width: 100%; height: 3rem; }
+.chapter-audio__tools { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; margin-top: .75rem; }
+.chapter-audio__tools button, .chapter-audio__tools select {
+  min-height: 2.75rem; border: 1px solid var(--rule); border-radius: 2px;
+  background: var(--paper); color: var(--ink); font: inherit; padding: .5rem;
+}
+.chapter-audio__tools button, .chapter-audio__tools select { cursor: pointer; }
+.chapter-audio__tools label { display: flex; align-items: center; gap: .5rem; }
+.chapter-audio__tools :focus-visible { outline: 2px solid var(--lamp-deep); outline-offset: 3px; }
+.chapter-audio__status { margin: .75rem 0 0; }
+@media print { .chapter-audio { display: none; } }
+
 /* ------------------------------------------------------------ 9. 页脚 */
 .footer {
   max-width: 60rem;

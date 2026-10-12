@@ -22,7 +22,7 @@
     {{- else -}}
     <a class="toc__link" href="{{ .RelPermalink }}">
       <span class="toc__num">{{ printf "%02d" .Weight }}</span>
-      <span class="toc__name">{{ $name }}{{ if $note }}<em class="toc__tag">作者附记</em>{{ end }}</span>
+      <span class="toc__name">{{ $name }}{{ if $note }}<em class="toc__tag">作者附记</em>{{ end }}{{ with index site.Data.audio (printf "%d" .Weight) }}<em class="toc__tag">可收听 · {{ .duration }}</em>{{ end }}</span>
       <span class="toc__dots"></span>
       <span class="toc__tail">{{ if $note }}—{{ else }}{{ lang.FormatNumber 0 .WordCount }} 字{{ end }}</span>
     </a>

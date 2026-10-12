@@ -1,0 +1,22 @@
+{{ with index site.Data.audio (printf "%d" .Weight) }}
+<section class="chapter-audio" id="listen" aria-label="本章有声版" data-revision="{{ .revision }}">
+  <div class="chapter-audio__heading">
+    <span>听这一章</span><span class="chapter-audio__credit">guige 声音 · AI 朗读 · {{ .duration }}</span>
+  </div>
+  <audio id="chapter-narration" controls preload="none" aria-label="本章朗读" src="{{ .mixed | relURL }}"></audio>
+  <div class="chapter-audio__tools">
+    <button type="button" data-seek="-15" aria-label="后退十五秒">−15 秒</button>
+    <button type="button" data-seek="15" aria-label="前进十五秒">+15 秒</button>
+    <label>版本 <select id="narration-version">
+      <option value="{{ .mixed | relURL }}">轻配乐</option>
+      <option value="{{ .voice | relURL }}">纯人声</option>
+    </select></label>
+    <label>倍速 <select id="narration-speed">
+      <option value="0.85">0.85×</option><option value="1" selected>1×</option>
+      <option value="1.25">1.25×</option><option value="1.5">1.5×</option><option value="2">2×</option>
+    </select></label>
+  </div>
+  <p class="chapter-audio__status" id="narration-status" role="status">点播放，听这段故事。</p>
+  <noscript><p>可直接使用上方播放器收听配乐版。</p></noscript>
+</section>
+{{ end }}

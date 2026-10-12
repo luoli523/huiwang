@@ -211,11 +211,65 @@
     audio.addEventListener('pause', function () { bulb.classList.remove('is-on'); });
   }
 
+  /* ------------------------------------------------------ 本章朗读 */
+  var narration = $('#chapter-narration');
+  if (narration) {
+    var panel = $('#listen'), status = $('#narration-status');
+    var version = $('#narration-version'), speed = $('#narration-speed');
+    var listenKey = 'hw-audio:' + location.pathname;
+    var saved = {}, restoreAt = 0;
+    try { saved = JSON.parse(LS.get(listenKey) || '{}') || {}; } catch (e) {}
+    if (saved.revision === panel.dataset.revision) {
+      restoreAt = Number(saved.time) || 0;
+      if (saved.version === 'voice') version.selectedIndex = 1;
+      narration.src = version.value;
+      if (restoreAt > 0) status.textContent = '已记住上次进度，点播放继续收听。';
+    }
+    var preferredSpeed = LS.get('hw-audio-speed');
+    if (Array.from(speed.options).some(function (o) { return o.value === preferredSpeed; })) speed.value = preferredSpeed;
+    narration.playbackRate = Number(speed.value);
+    narration.addEventListener('loadedmetadata', function () {
+      if (restoreAt > 0 && isFinite(narration.duration)) narration.currentTime = Math.min(restoreAt, Math.max(0, narration.duration - .1));
+      restoreAt = 0;
+      narration.playbackRate = Number(speed.value);
+    });
+    function rememberAudio() {
+      if (restoreAt > 0 || !isFinite(narration.duration)) return;
+      LS.set(listenKey, JSON.stringify({ revision: panel.dataset.revision, time: narration.ended ? 0 : narration.currentTime, version: version.selectedIndex ? 'voice' : 'mixed' }));
+    }
+    var lastRemember = 0;
+    narration.addEventListener('timeupdate', function () {
+      if (Date.now() - lastRemember > 3000) { rememberAudio(); lastRemember = Date.now(); }
+    });
+    narration.addEventListener('pause', rememberAudio);
+    addEventListener('pagehide', rememberAudio);
+    narration.addEventListener('play', function () {
+      if (audio) audio.pause();
+      status.textContent = '正在收听 · guige 讲述';
+    });
+    if (audio) audio.addEventListener('play', function () { narration.pause(); });
+    narration.addEventListener('ended', function () { rememberAudio(); status.textContent = '本章已听完。'; });
+    narration.addEventListener('error', function () { status.textContent = '音频暂时无法加载，请稍后重新播放。'; });
+    panel.querySelectorAll('[data-seek]').forEach(function (button) {
+      button.addEventListener('click', function () {
+        if (isFinite(narration.duration)) narration.currentTime = Math.max(0, Math.min(narration.duration, narration.currentTime + Number(button.dataset.seek)));
+      });
+    });
+    speed.addEventListener('change', function () { narration.playbackRate = Number(speed.value); LS.set('hw-audio-speed', speed.value); });
+    version.addEventListener('change', function () {
+      var wasPlaying = !narration.paused;
+      restoreAt = restoreAt || narration.currentTime;
+      narration.src = version.value;
+      narration.load();
+      if (wasPlaying) narration.play().catch(function () { status.textContent = '点播放继续收听。'; });
+    });
+  }
+
   /* -------------------------------------------------------- 键盘 */
   addEventListener('keydown', function (e) {
     if (e.metaKey || e.ctrlKey || e.altKey) return;
     var t = e.target.tagName;
-    var typing = t === 'INPUT' || t === 'TEXTAREA' || e.target.isContentEditable;
+    var typing = t === 'INPUT' || t === 'TEXTAREA' || t === 'SELECT' || t === 'BUTTON' || t === 'AUDIO' || e.target.isContentEditable;
 
     if (e.key === 'Escape') {
       if (drawer && drawer.classList.contains('is-open')) { closeDrawer(); }
