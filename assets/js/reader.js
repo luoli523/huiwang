@@ -197,7 +197,7 @@
   /* ------------------------------------------------------ 那盏灯：音乐 */
   var bulb = $('#btn-bgm'), audio = $('#bgm');
   if (bulb && audio) {
-    audio.volume = 0.28;
+    audio.volume = 0.35;
     bulb.addEventListener('click', function () {
       if (audio.paused) {
         audio.play().then(function () {
@@ -215,6 +215,8 @@
   var narration = $('#chapter-narration');
   if (narration) {
     var panel = $('#listen'), listenButton = $('#btn-narration');
+    var currentEpisode = Number(panel.dataset.chapter), advancing = false, autoNext = true;
+    var episodeLabel = $('#narration-episode'), episodeLink = $('#narration-episode-link');
     var audioProgress = $('#narration-progress'), audioTime = $('#narration-time'), scrubbing = false;
     function clockLabel(seconds) {
       seconds = Math.max(0, Math.floor(Number(seconds) || 0));
@@ -248,13 +250,11 @@
       if (Date.now() - lastRemember > 3000) { rememberAudio(); lastRemember = Date.now(); }
     });
     function syncListenButton() {
-      listenButton.textContent = narration.paused ? '播放' : '暂停';
       listenButton.setAttribute('aria-label', narration.paused ? '播放本章' : '暂停收听');
       listenButton.setAttribute('aria-pressed', narration.paused ? 'false' : 'true');
     }
     function audioError() {
       syncListenButton();
-      listenButton.textContent = '重试收听';
       listenButton.setAttribute('aria-label', '音频暂时无法加载，重试收听');
     }
     narration.addEventListener('pause', function () { rememberAudio(); syncListenButton(); });
@@ -263,8 +263,33 @@
       if (audio) audio.pause();
       syncListenButton();
     });
-    if (audio) audio.addEventListener('play', function () { narration.pause(); });
-    narration.addEventListener('ended', function () { rememberAudio(); syncListenButton(); });
+    if (audio) audio.addEventListener('play', function () { autoNext = false; narration.pause(); });
+    narration.addEventListener('ended', function () {
+      rememberAudio(); syncListenButton();
+      if (advancing || !autoNext) return;
+      advancing = true;
+      fetch(panel.dataset.playlist, { cache: 'no-store' }).then(function (response) {
+        if (!response.ok) throw new Error('Playlist unavailable');
+        return response.json();
+      }).then(function (episodes) {
+        if (!narration.ended || !autoNext) return;
+        var next = episodes.find(function (episode) { return episode.n === currentEpisode + 1; });
+        if (!next) return;
+        currentEpisode = next.n;
+        panel.dataset.revision = next.revision;
+        panel.dataset.title = next.title;
+        listenButton.title = 'guige 声音 · AI 朗读 · ' + next.title;
+        listenKey = 'hw-audio:' + next.url;
+        restoreAt = 0;
+        audioProgress.max = next.seconds;
+        drawAudioProgress(0);
+        episodeLink.href = next.url + '#listen';
+        episodeLink.textContent = '正在收听：' + next.title;
+        episodeLabel.hidden = false;
+        narration.src = next.src;
+        return narration.play().catch(function (error) { if (error.name !== 'AbortError') audioError(); });
+      }).catch(function () {}).finally(function () { advancing = false; });
+    });
     narration.addEventListener('error', audioError);
     audioProgress.addEventListener('input', function () { scrubbing = true; drawAudioProgress(Number(audioProgress.value)); });
     audioProgress.addEventListener('pointercancel', function () { scrubbing = false; });
@@ -282,9 +307,10 @@
     });
     listenButton.addEventListener('click', function () {
       if (narration.paused) {
+        autoNext = true;
         if (narration.error) narration.load();
         narration.play().catch(function (error) { if (error.name !== 'AbortError') audioError(); });
-      } else narration.pause();
+      } else { autoNext = false; narration.pause(); }
     });
   }
 

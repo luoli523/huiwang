@@ -1,6 +1,19 @@
+{{ $ctx := . }}
 {{ with index site.Data.audio (printf "%d" .Weight) }}
-<div class="chapter-audio" id="listen" data-revision="{{ .revision }}">
-  <button type="button" id="btn-narration" aria-pressed="false" aria-label="播放本章" title="guige 声音 · AI 朗读 · {{ .duration }}">播放</button>
+{{ $playlist := slice }}
+{{ range sort (where site.RegularPages "Section" "docs") "Weight" }}
+  {{ $chapter := . }}
+  {{ with index site.Data.audio (printf "%d" .Weight) }}
+    {{ $playlist = $playlist | append (dict "n" $chapter.Weight "title" $chapter.Title "url" $chapter.RelPermalink "src" (printf "%s?v=%s" (.mixed | relURL) .revision) "seconds" .seconds "revision" .revision) }}
+  {{ end }}
+{{ end }}
+{{ $playlistFile := resources.FromString "audio/playlist.json" ($playlist | jsonify) }}
+<div class="chapter-audio" id="listen" data-revision="{{ .revision }}" data-chapter="{{ $ctx.Weight }}" data-title="{{ $ctx.Title }}" data-playlist="{{ $playlistFile.RelPermalink }}">
+  <p class="chapter-audio__episode" id="narration-episode" hidden aria-live="polite"><a id="narration-episode-link"></a></p>
+  <button type="button" id="btn-narration" aria-pressed="false" aria-label="播放本章" title="guige 声音 · AI 朗读 · {{ .duration }}">
+    <svg class="chapter-audio__play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4v16l14-8Z"/></svg>
+    <svg class="chapter-audio__pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h4v16H6zm8 0h4v16h-4z"/></svg>
+  </button>
   <input id="narration-progress" type="range" min="0" max="{{ .seconds }}" step="0.1" value="0" aria-label="收听进度" aria-valuetext="尚未播放" title="拖动调整收听进度">
   <span class="chapter-audio__time" id="narration-time">0:00 / {{ .duration }}</span>
   <audio id="chapter-narration" preload="none" hidden src="{{ .mixed | relURL }}?v={{ .revision }}"></audio>

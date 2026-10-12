@@ -8,7 +8,7 @@ import subprocess
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-MUSIC_VERSION = "youtube-ADvyiXJOS-s-v1"
+MUSIC_VERSION = "youtube-ADvyiXJOS-s-v2"
 BGM = ROOT / ".audio-work/bgm/source.m4a"
 SOURCE_URL = "https://www.youtube.com/watch?v=ADvyiXJOS-s"
 MUSIC_TITLE = "深度睡眠，放松和治愈睡眠音乐（BGM）"
@@ -29,7 +29,7 @@ def mix(chapter):
     filters = (
         "[0:a]asplit=2[voice][control];"
         f"[1:a]atrim=duration={duration},asetpts=PTS-STARTPTS,loudnorm=I=-32:TP=-8:LRA=7,"
-        f"volume=0.7,afade=t=in:d=3,afade=t=out:st={max(0, duration - 5)}:d=5[music];"
+        f"volume=0.88,afade=t=in:d=3,afade=t=out:st={max(0, duration - 5)}:d=5[music];"
         "[music][control]sidechaincompress=threshold=0.025:ratio=4:attack=25:release=650[bed];"
         "[voice][bed]amix=inputs=2:duration=first:normalize=0,loudnorm=I=-18:TP=-2:LRA=9[out]"
     )
