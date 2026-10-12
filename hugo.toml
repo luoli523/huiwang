@@ -18,7 +18,7 @@ disableKinds = ['taxonomy', 'term']
   cover = 'images/cover-your-wedding.jpg'
   description = '一部关于2005年北京、北河沿考研屋与一群年轻人的长篇小说。'
   # 右下角背景音乐，默认不播放，需手动点亮
-  bgm = 'music/background.mp3'
+  bgm = 'music/background.mp3?v=ADvyiXJOS-s'
   bgmTitle = '深度睡眠 · 放松和治愈睡眠音乐'
 
   # 访问统计：与主站同一 hostname，共用同一个 Cloudflare Web Analytics token
