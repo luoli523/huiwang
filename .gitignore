@@ -19,3 +19,4 @@ resources/_gen/
 
 # Local narration working files (published MP3s live in static/audio/)
 .audio-work/
+static/audio/*.tmp.mp3
