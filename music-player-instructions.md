@@ -9,10 +9,13 @@
 | 播放器代码 | `layouts/_default/baseof.html`（`.bulb` 按钮 + `<audio id="bgm">`） |
 | 交互逻辑 | `assets/js/reader.js` 末段 |
 | 外观 | `assets/css/book.css` 的 `.bulb` 一节 |
-| 音频文件 | `static/music/background.mp3`（约 3 分 37 秒） |
+| 音频文件 | `static/music/background.mp3`（用户指定 BGM 的前 10 分钟，轻淡入淡出） |
 | 配置 | `hugo.toml` 里的 `params.bgm` 与 `params.bgmTitle` |
 | 自动播放 | **没有**。浏览器普遍拦截自动播放，读者没点之前也不该出声 |
 | 初始音量 | 0.28 |
+
+当前曲目：[深度睡眠，放松和治愈睡眠音乐（BGM）](https://www.youtube.com/watch?v=ADvyiXJOS-s)。
+全站背景音和各章口播使用同一来源，播放口播时全站背景音暂停。
 
 ## 换一首曲子
 

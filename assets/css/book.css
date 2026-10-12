@@ -736,17 +736,22 @@ a.chapnav__item:hover { border-color: var(--lamp); background: var(--lamp-wash);
 
 /* 本章有声版，沿用纸页和灯色 */
 .chapter-audio {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
   margin: 0 0 2rem;
   font: .85rem/1.6 var(--sans);
-  text-align: center;
 }
 .chapter-audio button {
   min-height: 2.75rem; border: 1px solid var(--rule); border-radius: 2px;
   background: var(--paper-2); color: var(--lamp-deep); font: inherit;
-  padding: .5rem 1.5rem; cursor: pointer;
+  padding: .5rem 1rem; cursor: pointer; flex-shrink: 0;
 }
 .chapter-audio button:hover { border-color: var(--lamp); }
 .chapter-audio button:focus-visible { outline: 2px solid var(--lamp-deep); outline-offset: 3px; }
+.chapter-audio input[type="range"] { flex: 1; min-width: 0; accent-color: var(--lamp-deep); cursor: pointer; min-height: 2.75rem; }
+.chapter-audio input:focus-visible { outline: 2px solid var(--lamp-deep); outline-offset: 3px; }
+.chapter-audio__time { color: var(--ink-soft); font-size: .75rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
 @media print { .chapter-audio { display: none; } }
 
 /* ------------------------------------------------------------ 9. 页脚 */

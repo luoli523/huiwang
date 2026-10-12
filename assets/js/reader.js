@@ -215,15 +215,28 @@
   var narration = $('#chapter-narration');
   if (narration) {
     var panel = $('#listen'), listenButton = $('#btn-narration');
+    var audioProgress = $('#narration-progress'), audioTime = $('#narration-time'), scrubbing = false;
+    function clockLabel(seconds) {
+      seconds = Math.max(0, Math.floor(Number(seconds) || 0));
+      return Math.floor(seconds / 60) + ':' + String(seconds % 60).padStart(2, '0');
+    }
+    function drawAudioProgress(seconds) {
+      audioProgress.value = seconds;
+      audioTime.textContent = clockLabel(seconds) + ' / ' + clockLabel(audioProgress.max);
+      audioProgress.setAttribute('aria-valuetext', '已播放 ' + clockLabel(seconds) + '，共 ' + clockLabel(audioProgress.max));
+    }
     var listenKey = 'hw-audio:' + location.pathname;
     var saved = {}, restoreAt = 0;
     try { saved = JSON.parse(LS.get(listenKey) || '{}') || {}; } catch (e) {}
     if (saved.revision === panel.dataset.revision) {
       restoreAt = Number(saved.time) || 0;
     }
+    drawAudioProgress(restoreAt);
     narration.addEventListener('loadedmetadata', function () {
       if (restoreAt > 0 && isFinite(narration.duration)) narration.currentTime = Math.min(restoreAt, Math.max(0, narration.duration - .1));
       restoreAt = 0;
+      audioProgress.max = narration.duration;
+      if (!scrubbing) drawAudioProgress(narration.currentTime);
     });
     function rememberAudio() {
       if (restoreAt > 0 || !isFinite(narration.duration)) return;
@@ -231,11 +244,12 @@
     }
     var lastRemember = 0;
     narration.addEventListener('timeupdate', function () {
+      if (!scrubbing) drawAudioProgress(narration.currentTime);
       if (Date.now() - lastRemember > 3000) { rememberAudio(); lastRemember = Date.now(); }
     });
     function syncListenButton() {
-      listenButton.textContent = narration.paused ? '收听' : '暂停';
-      listenButton.setAttribute('aria-label', narration.paused ? '收听本章' : '暂停收听');
+      listenButton.textContent = narration.paused ? '播放' : '暂停';
+      listenButton.setAttribute('aria-label', narration.paused ? '播放本章' : '暂停收听');
       listenButton.setAttribute('aria-pressed', narration.paused ? 'false' : 'true');
     }
     function audioError() {
@@ -252,6 +266,20 @@
     if (audio) audio.addEventListener('play', function () { narration.pause(); });
     narration.addEventListener('ended', function () { rememberAudio(); syncListenButton(); });
     narration.addEventListener('error', audioError);
+    audioProgress.addEventListener('input', function () { scrubbing = true; drawAudioProgress(Number(audioProgress.value)); });
+    audioProgress.addEventListener('pointercancel', function () { scrubbing = false; });
+    audioProgress.addEventListener('blur', function () { scrubbing = false; });
+    audioProgress.addEventListener('change', function () {
+      var seconds = Number(audioProgress.value);
+      scrubbing = false;
+      if (isFinite(narration.duration)) {
+        narration.currentTime = Math.min(seconds, narration.duration);
+        rememberAudio();
+      } else {
+        restoreAt = seconds;
+        narration.load();
+      }
+    });
     listenButton.addEventListener('click', function () {
       if (narration.paused) {
         if (narration.error) narration.load();

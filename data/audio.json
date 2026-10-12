@@ -1,10 +1,19 @@
 {
   "1": {
-    "voice": "audio/chapter-01-voice.mp3",
     "mixed": "audio/chapter-01-mixed.mp3",
     "duration": "9:12",
     "seconds": 551.66,
-    "revision": "6e0eb31629a27665",
-    "music": "原创器乐：夜行与微光"
+    "revision": "dd66722e5817b0f7",
+    "music": "深度睡眠，放松和治愈睡眠音乐（BGM）",
+    "music_source": "https://www.youtube.com/watch?v=ADvyiXJOS-s",
+    "voice": "audio/chapter-01-voice.mp3"
+  },
+  "2": {
+    "mixed": "audio/chapter-02-mixed.mp3",
+    "duration": "14:24",
+    "seconds": 863.7,
+    "revision": "945ebd1d9200c39a",
+    "music": "深度睡眠，放松和治愈睡眠音乐（BGM）",
+    "music_source": "https://www.youtube.com/watch?v=ADvyiXJOS-s"
   }
 }
