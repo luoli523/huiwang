@@ -39,5 +39,37 @@
     "revision": "bec84fa4fd0bafd0",
     "music": "深度睡眠，放松和治愈睡眠音乐（BGM）",
     "music_source": "https://www.youtube.com/watch?v=ADvyiXJOS-s"
+  },
+  "6": {
+    "mixed": "audio/chapter-06-mixed.mp3",
+    "duration": "9:54",
+    "seconds": 593.7,
+    "revision": "1de9a3249b78a06b",
+    "music": "深度睡眠，放松和治愈睡眠音乐（BGM）",
+    "music_source": "https://www.youtube.com/watch?v=ADvyiXJOS-s"
+  },
+  "7": {
+    "mixed": "audio/chapter-07-mixed.mp3",
+    "duration": "4:54",
+    "seconds": 293.81,
+    "revision": "835d4dcfa30b9466",
+    "music": "深度睡眠，放松和治愈睡眠音乐（BGM）",
+    "music_source": "https://www.youtube.com/watch?v=ADvyiXJOS-s"
+  },
+  "8": {
+    "mixed": "audio/chapter-08-mixed.mp3",
+    "duration": "8:57",
+    "seconds": 537.13,
+    "revision": "24a3e73aa8f5667d",
+    "music": "深度睡眠，放松和治愈睡眠音乐（BGM）",
+    "music_source": "https://www.youtube.com/watch?v=ADvyiXJOS-s"
+  },
+  "9": {
+    "mixed": "audio/chapter-09-mixed.mp3",
+    "duration": "11:13",
+    "seconds": 673.15,
+    "revision": "cd8716c0a5d64313",
+    "music": "深度睡眠，放松和治愈睡眠音乐（BGM）",
+    "music_source": "https://www.youtube.com/watch?v=ADvyiXJOS-s"
   }
 }
