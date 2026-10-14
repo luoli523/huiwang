@@ -5,7 +5,12 @@
     "title": "叶蒨文《潇洒走一回》",
     "source": "https://www.youtube.com/watch?v=KZ8Hxm2W5Ts",
     "source_start": 43,
-    "chapter_start": 500.628,
-    "fade_seconds": 2
+    "chapter_start": 500.627,
+    "narration_resume": 524.209,
+    "source_end": 96,
+    "fade_seconds": 2,
+    "fade_out_seconds": 6,
+    "resume_pause": 0.75,
+    "mode": "replace_narration"
   }
 }

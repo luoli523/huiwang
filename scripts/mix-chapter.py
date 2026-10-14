@@ -28,7 +28,9 @@ def mix(chapter):
     cue = cues.get(str(chapter))
     extra_inputs = []
     music_filter = ""
-    music_label = "music"
+    voice_filter = "[0:a]asplit=2[voice][control];"
+    foreground = ""
+    music_gain = ""
     if cue:
         if cue["source_hash"] != manifest["source_hash"]:
             raise ValueError("Chapter text changed; realign its music cue first")
@@ -37,30 +39,53 @@ def mix(chapter):
             raise FileNotFoundError(f"Download {cue['source']} to {song} first")
         fade = cue["fade_seconds"]
         start = cue["chapter_start"] - fade
-        if not (0 <= start < duration - 5 and cue["source_start"] >= fade > 0):
+        resume_source = cue["narration_resume"]
+        song_duration = cue["source_end"] - cue["source_start"] + fade
+        fade_out = cue["fade_out_seconds"]
+        if not (
+            cue["mode"] == "replace_narration"
+            and 0 <= start < cue["chapter_start"] < resume_source < duration
+            and cue["source_start"] >= fade > 0
+            and 0 < fade_out < song_duration
+            and cue["resume_pause"] >= 0
+        ):
             raise ValueError("Music cue is outside the narration timeline")
+        resume = start + song_duration + cue["resume_pause"]
+        duration = resume + duration - resume_source
         extra_inputs = ["-ss", str(cue["source_start"] - fade), "-i", str(song)]
-        # Start the fade two seconds before the lyric; singing at source 43s
-        # then arrives exactly at the first spoken lyric. Keep it to the ending.
-        music_filter = (
-            f"[music]volume='if(lt(t,{start}),1,"
-            f"max(0,1-(t-{start})/{fade}))':eval=frame[original];"
-            f"[2:a]atrim=duration={duration - start},asetpts=PTS-STARTPTS,"
-            "loudnorm=I=-29:TP=-8:LRA=7,"
-            f"afade=t=in:d={fade},afade=t=out:st={duration - start - 5}:d=5,"
-            f"adelay={round(start * 1000)}:all=1[song];"
-            "[original][song]amix=inputs=2:duration=first:normalize=0[selected];"
+        # Remove spoken lyrics, leave space for the complete sung passage,
+        # then resume the original ending after the song has faded away.
+        voice_filter = (
+            "[0:a]asplit=2[before][after];"
+            f"[before]atrim=end={cue['chapter_start']},asetpts=PTS-STARTPTS[opening];"
+            f"[after]atrim=start={resume_source},asetpts=PTS-STARTPTS,"
+            f"adelay={round(resume * 1000)}:all=1[ending];"
+            "[opening][ending]amix=inputs=2:duration=longest:normalize=0,"
+            "asplit=2[voice][control];"
         )
-        music_label = "selected"
+        music_gain = (
+            f",volume='if(lt(t,{start}),1,if(lt(t,{cue['chapter_start']}),"
+            f"max(0,1-(t-{start})/{fade}),"
+            f"if(lt(t,{resume}),0,min(1,(t-{resume})/3))))':eval=frame"
+        )
+        music_filter = (
+            f"[2:a]atrim=duration={song_duration},asetpts=PTS-STARTPTS,"
+            "loudnorm=I=-18:TP=-2:LRA=9,"
+            f"afade=t=in:d={fade},afade=t=out:st={song_duration - fade_out}:d={fade_out},"
+            f"adelay={round(start * 1000)}:all=1[song];"
+        )
+        foreground = "[song]"
     target = ROOT / "static/audio" / f"chapter-{chapter:02d}-mixed.mp3"
     temporary = target.with_suffix(".tmp.mp3")
     filters = (
-        "[0:a]asplit=2[voice][control];"
-        f"[1:a]atrim=duration={duration},asetpts=PTS-STARTPTS,loudnorm=I=-32:TP=-8:LRA=7,"
-        f"volume=0.88,afade=t=in:d=3,afade=t=out:st={max(0, duration - 5)}:d=5[music];"
+        voice_filter
+        + f"[1:a]atrim=duration={duration},asetpts=PTS-STARTPTS,loudnorm=I=-32:TP=-8:LRA=7,"
+        + f"volume=0.88,afade=t=in:d=3,afade=t=out:st={max(0, duration - 5)}:d=5"
+        + music_gain + "[music];"
         + music_filter
-        + f"[{music_label}][control]sidechaincompress=threshold=0.025:ratio=4:attack=25:release=650[bed];"
-        "[voice][bed]amix=inputs=2:duration=first:normalize=0,loudnorm=I=-18:TP=-2:LRA=9[out]"
+        + "[music][control]sidechaincompress=threshold=0.025:ratio=4:attack=25:release=650[bed];"
+        + f"[voice][bed]{foreground}amix=inputs={3 if cue else 2}:duration=first:normalize=0,"
+        + "loudnorm=I=-18:TP=-2:LRA=9[out]"
     )
     subprocess.run(
         [
@@ -113,9 +138,10 @@ def mix(chapter):
     if manifest["output"].startswith("static/"):
         episode["voice"] = manifest["output"].removeprefix("static/")
     if cue:
-        episode["music_cue"] = {key: cue[key] for key in (
-            "title", "source", "source_start", "chapter_start", "fade_seconds"
-        )}
+        episode["music_cue"] = {
+            key: value for key, value in cue.items() if key not in ("file", "source_hash")
+        }
+        episode["music_cue"]["narration_resume_at"] = round(resume, 3)
     catalog[str(chapter)] = episode
     temporary_catalog = path.with_suffix(".tmp")
     temporary_catalog.write_text(
