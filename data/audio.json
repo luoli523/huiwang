@@ -156,9 +156,16 @@
     "mixed": "audio/chapter-20-mixed.mp3",
     "duration": "9:04",
     "seconds": 543.67,
-    "revision": "e6955c0cae7652cc",
+    "revision": "7ecbaa4ef5328fc5",
     "music": "深度睡眠，放松和治愈睡眠音乐（BGM）",
-    "music_source": "https://www.youtube.com/watch?v=ADvyiXJOS-s"
+    "music_source": "https://www.youtube.com/watch?v=ADvyiXJOS-s",
+    "music_cue": {
+      "title": "叶蒨文《潇洒走一回》",
+      "source": "https://www.youtube.com/watch?v=KZ8Hxm2W5Ts",
+      "source_start": 43,
+      "chapter_start": 500.628,
+      "fade_seconds": 2
+    }
   },
   "21": {
     "mixed": "audio/chapter-21-mixed.mp3",

@@ -24,13 +24,42 @@ def mix(chapter):
             "Download the user-selected BGM to .audio-work/bgm/source.m4a first"
         )
     duration = manifest["duration"]
+    cues = json.loads((ROOT / "data/audio-cues.json").read_text())
+    cue = cues.get(str(chapter))
+    extra_inputs = []
+    music_filter = ""
+    music_label = "music"
+    if cue:
+        if cue["source_hash"] != manifest["source_hash"]:
+            raise ValueError("Chapter text changed; realign its music cue first")
+        song = ROOT / cue["file"]
+        if not song.is_file():
+            raise FileNotFoundError(f"Download {cue['source']} to {song} first")
+        fade = cue["fade_seconds"]
+        start = cue["chapter_start"] - fade
+        if not (0 <= start < duration - 5 and cue["source_start"] >= fade > 0):
+            raise ValueError("Music cue is outside the narration timeline")
+        extra_inputs = ["-ss", str(cue["source_start"] - fade), "-i", str(song)]
+        # Start the fade two seconds before the lyric; singing at source 43s
+        # then arrives exactly at the first spoken lyric. Keep it to the ending.
+        music_filter = (
+            f"[music]volume='if(lt(t,{start}),1,"
+            f"max(0,1-(t-{start})/{fade}))':eval=frame[original];"
+            f"[2:a]atrim=duration={duration - start},asetpts=PTS-STARTPTS,"
+            "loudnorm=I=-29:TP=-8:LRA=7,"
+            f"afade=t=in:d={fade},afade=t=out:st={duration - start - 5}:d=5,"
+            f"adelay={round(start * 1000)}:all=1[song];"
+            "[original][song]amix=inputs=2:duration=first:normalize=0[selected];"
+        )
+        music_label = "selected"
     target = ROOT / "static/audio" / f"chapter-{chapter:02d}-mixed.mp3"
     temporary = target.with_suffix(".tmp.mp3")
     filters = (
         "[0:a]asplit=2[voice][control];"
         f"[1:a]atrim=duration={duration},asetpts=PTS-STARTPTS,loudnorm=I=-32:TP=-8:LRA=7,"
         f"volume=0.88,afade=t=in:d=3,afade=t=out:st={max(0, duration - 5)}:d=5[music];"
-        "[music][control]sidechaincompress=threshold=0.025:ratio=4:attack=25:release=650[bed];"
+        + music_filter
+        + f"[{music_label}][control]sidechaincompress=threshold=0.025:ratio=4:attack=25:release=650[bed];"
         "[voice][bed]amix=inputs=2:duration=first:normalize=0,loudnorm=I=-18:TP=-2:LRA=9[out]"
     )
     subprocess.run(
@@ -46,6 +75,7 @@ def mix(chapter):
             "-1",
             "-i",
             str(BGM),
+            *extra_inputs,
             "-filter_complex",
             filters,
             "-map",
@@ -82,6 +112,10 @@ def mix(chapter):
     )
     if manifest["output"].startswith("static/"):
         episode["voice"] = manifest["output"].removeprefix("static/")
+    if cue:
+        episode["music_cue"] = {key: cue[key] for key in (
+            "title", "source", "source_start", "chapter_start", "fade_seconds"
+        )}
     catalog[str(chapter)] = episode
     temporary_catalog = path.with_suffix(".tmp")
     temporary_catalog.write_text(
