@@ -12,5 +12,17 @@
     "fade_out_seconds": 6,
     "resume_pause": 0.75,
     "mode": "replace_narration"
+  },
+  "23": {
+    "source_hash": "662ddcb715b349fb2131bfc54fba5b13e6194242499aca9f56bbbabf59b6c9c1",
+    "file": ".audio-work/bgm/chapter23-song.m4a",
+    "title": "Eagles《Hotel California》1994 不插电现场版",
+    "source": "https://www.youtube.com/watch?v=lcRBbAp4LDw",
+    "source_start": 5,
+    "source_end": 433.017333,
+    "fade_seconds": 1.2,
+    "fade_out_seconds": 6,
+    "append_pause": 0.5,
+    "mode": "append"
   }
 }

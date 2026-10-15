@@ -75,6 +75,8 @@ hugo server
 歌曲从 43 秒起完整唱完这一段，在 90–96 秒处淡出，然后恢复章末口播和轻背景音乐。
 `data/audio-cues.json` 保存替换区间、淡出时间与原文摘要；歌曲源音轨放在
 `.audio-work/bgm/chapter20-song.m4a`。正文变化后需重新定位切入点再混音。
+第 23 章口播结束后接入用户指定的《Hotel California》1994 不插电现场版，
+从歌曲第 5 秒播放至结束，末尾 6 秒淡出；源音轨放在 `.audio-work/bgm/chapter23-song.m4a`。
 批量脚本固定第一集的参考录音版本，检查朗读稿覆盖，逐章抽查开头、结尾的本地
 Whisper 转写并保存结果。续跑会复用已完成章节和片段。
 `--publish-every` 会提交并推送完成的章节，通过现有 GitHub Pages 工作流部署；

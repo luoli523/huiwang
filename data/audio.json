@@ -191,11 +191,22 @@
   },
   "23": {
     "mixed": "audio/chapter-23-mixed.mp3",
-    "duration": "5:31",
-    "seconds": 331.32,
-    "revision": "54903756b090d9bc",
+    "duration": "12:40",
+    "seconds": 759.84,
+    "revision": "c205672177031ffb",
     "music": "深度睡眠，放松和治愈睡眠音乐（BGM）",
-    "music_source": "https://www.youtube.com/watch?v=ADvyiXJOS-s"
+    "music_source": "https://www.youtube.com/watch?v=ADvyiXJOS-s",
+    "music_cue": {
+      "title": "Eagles《Hotel California》1994 不插电现场版",
+      "source": "https://www.youtube.com/watch?v=lcRBbAp4LDw",
+      "source_start": 5,
+      "source_end": 433.017333,
+      "fade_seconds": 1.2,
+      "fade_out_seconds": 6,
+      "append_pause": 0.5,
+      "mode": "append",
+      "chapter_start": 331.822
+    }
   },
   "24": {
     "mixed": "audio/chapter-24-mixed.mp3",

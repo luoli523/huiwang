@@ -37,6 +37,31 @@ def mix(chapter):
         song = ROOT / cue["file"]
         if not song.is_file():
             raise FileNotFoundError(f"Download {cue['source']} to {song} first")
+    if cue and cue["mode"] == "append":
+        song_duration = cue["source_end"] - cue["source_start"]
+        start = duration + cue["append_pause"]
+        fade = cue["fade_seconds"]
+        fade_out = cue["fade_out_seconds"]
+        if not (
+            cue["source_start"] >= 0 and cue["append_pause"] >= 0
+            and 0 < fade < song_duration and 0 < fade_out < song_duration
+        ):
+            raise ValueError("Invalid ending song interval")
+        # Let the original background fade away before the standalone song.
+        music_gain = (
+            f",volume='max(0,min(1,({duration}-t)/3))':eval=frame"
+        )
+        duration = start + song_duration
+        voice_filter = f"[0:a]apad=whole_dur={duration},asplit=2[voice][control];"
+        extra_inputs = ["-ss", str(cue["source_start"]), "-i", str(song)]
+        music_filter = (
+            f"[2:a]atrim=duration={song_duration},asetpts=PTS-STARTPTS,"
+            "loudnorm=I=-18:TP=-2:LRA=9,"
+            f"afade=t=in:d={fade},afade=t=out:st={song_duration - fade_out}:d={fade_out},"
+            f"adelay={round(start * 1000)}:all=1[song];"
+        )
+        foreground = "[song]"
+    elif cue:
         fade = cue["fade_seconds"]
         start = cue["chapter_start"] - fade
         resume_source = cue["narration_resume"]
@@ -141,7 +166,10 @@ def mix(chapter):
         episode["music_cue"] = {
             key: value for key, value in cue.items() if key not in ("file", "source_hash")
         }
-        episode["music_cue"]["narration_resume_at"] = round(resume, 3)
+        if cue["mode"] == "append":
+            episode["music_cue"]["chapter_start"] = round(start, 3)
+        else:
+            episode["music_cue"]["narration_resume_at"] = round(resume, 3)
     catalog[str(chapter)] = episode
     temporary_catalog = path.with_suffix(".tmp")
     temporary_catalog.write_text(
