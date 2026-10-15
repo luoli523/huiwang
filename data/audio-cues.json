@@ -24,5 +24,17 @@
     "fade_out_seconds": 6,
     "append_pause": 0.5,
     "mode": "append"
+  },
+  "29": {
+    "source_hash": "f3a9ba2789eec8674317a8051d37071c0e4c67a42f340313cc4aa45bfff46f1c",
+    "file": ".audio-work/bgm/chapter29-song.m4a",
+    "title": "Beyond《海阔天空》",
+    "source": "https://www.youtube.com/watch?v=gmej4KgAzJw",
+    "source_start": 0,
+    "source_end": 322.919917,
+    "fade_seconds": 1.2,
+    "fade_out_seconds": 6,
+    "append_pause": 0.5,
+    "mode": "append"
   }
 }

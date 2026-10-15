@@ -77,6 +77,8 @@ hugo server
 `.audio-work/bgm/chapter20-song.m4a`。正文变化后需重新定位切入点再混音。
 第 23 章口播结束后接入用户指定的《Hotel California》1994 不插电现场版，
 从歌曲第 5 秒播放至结束，末尾 6 秒淡出；源音轨放在 `.audio-work/bgm/chapter23-song.m4a`。
+第 29 章口播结束后接入用户指定的 Beyond《海阔天空》，从歌曲开头播放至结束，
+末尾 6 秒淡出；源音轨放在 `.audio-work/bgm/chapter29-song.m4a`。
 批量脚本固定第一集的参考录音版本，检查朗读稿覆盖，逐章抽查开头、结尾的本地
 Whisper 转写并保存结果。续跑会复用已完成章节和片段。
 `--publish-every` 会提交并推送完成的章节，通过现有 GitHub Pages 工作流部署；

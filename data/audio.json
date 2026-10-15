@@ -250,10 +250,21 @@
   },
   "29": {
     "mixed": "audio/chapter-29-mixed.mp3",
-    "duration": "13:29",
-    "seconds": 808.97,
-    "revision": "dfb271e0a922835a",
+    "duration": "18:52",
+    "seconds": 1132.39,
+    "revision": "ce583ac7fcc79488",
     "music": "深度睡眠，放松和治愈睡眠音乐（BGM）",
-    "music_source": "https://www.youtube.com/watch?v=ADvyiXJOS-s"
+    "music_source": "https://www.youtube.com/watch?v=ADvyiXJOS-s",
+    "music_cue": {
+      "title": "Beyond《海阔天空》",
+      "source": "https://www.youtube.com/watch?v=gmej4KgAzJw",
+      "source_start": 0,
+      "source_end": 322.919917,
+      "fade_seconds": 1.2,
+      "fade_out_seconds": 6,
+      "append_pause": 0.5,
+      "mode": "append",
+      "chapter_start": 809.472
+    }
   }
 }
