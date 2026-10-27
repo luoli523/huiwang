@@ -13,11 +13,12 @@
   {
     "character": "李礼",
     "age_version": "成年",
-    "approved_portrait": "characters/lili/lili-approved-look-v1.png",
-    "turnaround_reference": "characters/lili/lili-turnaround-v1.png",
-    "traits": "清瘦、偏分黑发、细长眼形；灰蓝外套、白色 T 恤、深色牛仔裤、白色运动鞋。",
+    "approved_portrait": "characters/lili/lili-look-v2.png",
+    "turnaround_reference": "characters/lili/lili-turnaround-v2.png",
+    "traits": "清瘦、偏分黑发、细长眼形；眉眼放松、自然轻微笑意，眼周及面部阴影柔和；灰蓝外套、白色 T 恤、深色牛仔裤、白色运动鞋。",
     "prompts": [
-      "characters/lili/lili-turnaround-v1-prompt.txt"
+      "characters/lili/lili-look-v2-prompt.txt",
+      "characters/lili/lili-turnaround-v2-prompt.txt"
     ]
   },
   {
@@ -73,6 +74,50 @@
     "prompts": [
       "characters/xuxi/xuxi-look-v3-prompt.txt",
       "characters/xuxi/xuxi-turnaround-v1-prompt.txt"
+    ]
+  },
+  {
+    "character": "张浩翔",
+    "age_version": "成年",
+    "approved_portrait": "characters/zhanghaoxiang/zhanghaoxiang-look-v3.png",
+    "turnaround_reference": "characters/zhanghaoxiang/zhanghaoxiang-turnaround-v1.png",
+    "traits": "27 岁，高瘦、健康偏深肤色、瘦长脸、小眼睛、细框眼镜；无分缝的偏长寸头，顶部比两侧鬓角长，直发向前支撑、露额头；灰色冲锋衣裤、深灰内搭、厚底登山鞋，温和轻微笑意。",
+    "prompts": [
+      "characters/zhanghaoxiang/zhanghaoxiang-look-v3-prompt.txt",
+      "characters/zhanghaoxiang/zhanghaoxiang-turnaround-v1-prompt.txt"
+    ]
+  },
+  {
+    "character": "王惠芳",
+    "age_version": "成年",
+    "approved_portrait": "characters/wanghuifang/wanghuifang-look-v2.png",
+    "turnaround_reference": "characters/wanghuifang/wanghuifang-turnaround-v1.png",
+    "traits": "高挑修长、小椭圆脸、细眉眼、健康自然肤色、侧分斜向额发及很长的黑发，发尾自然微卷；浅米色毛衣、深蓝牛仔裤、米白低帮帆布鞋；温柔亲切、自然轻微笑意。",
+    "prompts": [
+      "characters/wanghuifang/wanghuifang-look-v2-prompt.txt",
+      "characters/wanghuifang/wanghuifang-turnaround-v1-prompt.txt"
+    ]
+  },
+  {
+    "character": "邓娜",
+    "age_version": "成年",
+    "approved_portrait": "characters/dengna/dengna-look-v2.png",
+    "turnaround_reference": "characters/dengna/dengna-turnaround-v1.png",
+    "traits": "小个子、身形紧凑、小圆脸、白净、丸子头、浓密整齐刘海，活泼机灵的笑意；米色拉链连帽外套、珊瑚色内搭、蓝牛仔裤、米白低帮帆布鞋。",
+    "prompts": [
+      "characters/dengna/dengna-look-v2-prompt.txt",
+      "characters/dengna/dengna-turnaround-v1-prompt.txt"
+    ]
+  },
+  {
+    "character": "张苗苗",
+    "age_version": "成年",
+    "approved_portrait": "characters/zhangmiaomiao/zhangmiaomiao-look-v2.png",
+    "turnaround_reference": "characters/zhangmiaomiao/zhangmiaomiao-turnaround-v1.png",
+    "traits": "高挑、健康肤色、宽平脸型、颧骨略高、细长小眼睛、嘴部轻微前突，朴实爽朗；黑色低马尾、橄榄绿外套、浅色针织内搭、深蓝直筒牛仔裤、朴素黑色平底系带鞋。",
+    "prompts": [
+      "characters/zhangmiaomiao/zhangmiaomiao-look-v2-prompt.txt",
+      "characters/zhangmiaomiao/zhangmiaomiao-turnaround-v1-prompt.txt"
     ]
   }
 ]

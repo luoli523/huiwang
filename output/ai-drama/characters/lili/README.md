@@ -5,11 +5,19 @@
 
 ## 成年版本
 
-- 单幅形象：[lili-approved-look-v1.png](lili-approved-look-v1.png)（用户已采用）。
-- 多角度参考：[lili-turnaround-v1.png](lili-turnaround-v1.png)（四个全身角度、三个头部角度）。
-- 特征：清瘦、偏分黑发、细长眼形；灰蓝外套、白色 T 恤、深色牛仔裤、白色运动鞋。
+- 单幅形象：[lili-look-v2.png](lili-look-v2.png)（用户已采用）。
+- 多角度参考：[lili-turnaround-v2.png](lili-turnaround-v2.png)（四个全身角度、三个头部角度；表情与面部明暗以 v2 单幅图为准）。
+- 特征：清瘦、偏分黑发、细长眼形；眉眼放松、自然轻微笑意，眼周及面部阴影柔和；灰蓝外套、白色 T 恤、深色牛仔裤、白色运动鞋。
 
-- 提示词：[lili-turnaround-v1-prompt.txt](lili-turnaround-v1-prompt.txt)。
+- 提示词：[lili-turnaround-v2-prompt.txt](lili-turnaround-v2-prompt.txt)。
+
+## 已确认的成年形象 v2
+
+- 用户已确认采用 v2，替换原单幅 v1。
+- 调整：放松眉眼与嘴角，增加轻微自然笑意，减淡眼周与脸部深色阴影。
+- [调整提示词](lili-look-v2-prompt.txt)：使用内置 image_gen，以原 v1 为编辑基准。
+- 多角度稿已按已确认单幅图重做为 v2，包含四个全身角度与三个头部角度，统一轻微自然笑意和柔和眼周阴影；去掉背包以展示服装结构。
+- v2 多角度稿为本次生成的新参考，尚未经用户单独确认；v1 留作历史备份，不作为当前镜头参考。
 
 ## 后续使用
 
