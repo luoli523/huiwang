@@ -119,5 +119,16 @@
       "characters/zhangmiaomiao/zhangmiaomiao-look-v2-prompt.txt",
       "characters/zhangmiaomiao/zhangmiaomiao-turnaround-v1-prompt.txt"
     ]
+  },
+  {
+    "character": "李礼",
+    "age_version": "中学",
+    "approved_portrait": "characters/lili/lili-school-look-v4.png",
+    "turnaround_reference": "characters/lili/lili-school-turnaround-v1.png",
+    "traits": "约十四岁，清瘦少年身形、窄肩、细长眉眼与成年版唇形关联；稍短的自然偏分黑发、机灵调皮的笑意；与唐晚中学版相同蓝白校服、深蓝白侧条长裤、白色运动鞋。",
+    "prompts": [
+      "characters/lili/lili-school-look-v4-prompt.txt",
+      "characters/lili/lili-school-turnaround-v1-prompt.txt"
+    ]
   }
 ]
