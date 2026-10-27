@@ -1,0 +1,78 @@
+[
+  {
+    "character": "巩震",
+    "age_version": "成年",
+    "approved_portrait": "characters/gongzhen/gongzhen-look-v2.png",
+    "turnaround_reference": "characters/gongzhen/gongzhen-turnaround-v1.png",
+    "traits": "约 178cm、圆润厚实、朴素憨厚、细框眼镜、短发贴头；灰外套、深灰内搭、深色长裤、黑色平底鞋。",
+    "prompts": [
+      "characters/gongzhen/gongzhen-look-v2-prompt.txt",
+      "characters/gongzhen/gongzhen-turnaround-v1-prompt.txt"
+    ]
+  },
+  {
+    "character": "李礼",
+    "age_version": "成年",
+    "approved_portrait": "characters/lili/lili-approved-look-v1.png",
+    "turnaround_reference": "characters/lili/lili-turnaround-v1.png",
+    "traits": "清瘦、偏分黑发、细长眼形；灰蓝外套、白色 T 恤、深色牛仔裤、白色运动鞋。",
+    "prompts": [
+      "characters/lili/lili-turnaround-v1-prompt.txt"
+    ]
+  },
+  {
+    "character": "唐晚",
+    "age_version": "中学",
+    "approved_portrait": "characters/tangwan/tangwan-school-look-v1.png",
+    "turnaround_reference": "characters/tangwan/tangwan-school-turnaround-v1.png",
+    "traits": "短学生头与额前刘海、安静文秀；蓝白校服、白色运动鞋；无痣。",
+    "prompts": [
+      "characters/tangwan/tangwan-school-look-v1-prompt.txt",
+      "characters/tangwan/tangwan-school-turnaround-v1-prompt.txt"
+    ]
+  },
+  {
+    "character": "唐晚",
+    "age_version": "大学",
+    "approved_portrait": "characters/tangwan/tangwan-university-look-v1.png",
+    "turnaround_reference": "characters/tangwan/tangwan-university-turnaround-v1.png",
+    "traits": "黑色长发、温柔恬静；浅蓝连衣裙、白色帆布鞋；采用最初无痣版本。",
+    "prompts": [
+      "characters/tangwan/tangwan-university-look-v1-prompt.txt",
+      "characters/tangwan/tangwan-university-turnaround-v1-prompt.txt"
+    ]
+  },
+  {
+    "character": "王晓斌",
+    "age_version": "成年",
+    "approved_portrait": "characters/wangxiaobin/wangxiaobin-look-v1.png",
+    "turnaround_reference": "characters/wangxiaobin/wangxiaobin-turnaround-v1.png",
+    "traits": "约 178cm、匀称、偏方脸、短刘海盖额头上方约三分之一；深绿外套、白色内搭、牛仔裤、白色运动鞋。",
+    "prompts": [
+      "characters/wangxiaobin/wangxiaobin-look-v1-prompt.txt",
+      "characters/wangxiaobin/wangxiaobin-turnaround-v1-prompt.txt"
+    ]
+  },
+  {
+    "character": "吴彬",
+    "age_version": "成年",
+    "approved_portrait": "characters/wubin/wubin-look-v2.png",
+    "turnaround_reference": "characters/wubin/wubin-turnaround-v1.png",
+    "traits": "偏矮、五短身材、圆软肉脸、自然微扬嘴角、黑框眼镜；白衬衫、灰针织背心、黑外套。",
+    "prompts": [
+      "characters/wubin/wubin-look-v2-prompt.txt",
+      "characters/wubin/wubin-turnaround-v1-prompt.txt"
+    ]
+  },
+  {
+    "character": "徐皙",
+    "age_version": "大学",
+    "approved_portrait": "characters/xuxi/xuxi-look-v3.png",
+    "turnaround_reference": "characters/xuxi/xuxi-turnaround-v1.png",
+    "traits": "高马尾、轻薄刘海、较窄鹅蛋脸、圣诞老人发卡；浅蓝外套、白色内搭、黑色牛仔裤、白袜和黑色皮鞋。",
+    "prompts": [
+      "characters/xuxi/xuxi-look-v3-prompt.txt",
+      "characters/xuxi/xuxi-turnaround-v1-prompt.txt"
+    ]
+  }
+]
