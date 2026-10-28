@@ -22,8 +22,10 @@
 
   <figure class="jacket__photo">
     <div class="jacket__mat">
-      <img src="{{ site.Params.cover | relURL }}" width="1304" height="1490"
-           alt="封面：暖金色调的旧照片拼贴" fetchpriority="high" decoding="async">
+      <a class="jacket__cover-link" href="{{ site.Params.cover | relURL }}" aria-label="查看封面大图" data-image-viewer data-label="封面">
+        <img src="{{ site.Params.cover | relURL }}" width="1172" height="1341"
+             alt="封面：李礼、唐晚和考研屋伙伴的青春回忆拼贴" fetchpriority="high" decoding="async">
+      </a>
     </div>
     <figcaption>2005 年秋 — 2006 年春 · 北京 海淀</figcaption>
   </figure>
@@ -36,6 +38,41 @@
     <p class="bbs__sign">发信人：史云涛<span class="bbs__cursor"></span></p>
   </div>
   <p class="bbs__note">一切从这一行黑底白字开始。<span>—— 第二章《找合租》</span></p>
+</section>
+
+<section class="characters" id="characters" aria-labelledby="characters-title">
+  <header class="section-head">
+    <h2 class="section-title" id="characters-title">人物相册</h2>
+    <p class="section-note">那些年，灯下的面孔 · 点击照片查看大图</p>
+  </header>
+  <div class="characters__grid">
+    {{ range site.Data.characters }}
+    {{ $label := .name }}{{ with .era }}{{ $label = printf "%s · %s" $label . }}{{ end }}
+    {{ $full := printf "images/characters/%s.webp" .image | relURL }}
+    {{ $thumb := printf "images/characters/%s-thumb.webp" .image | relURL }}
+    <figure class="character">
+      <a class="character__link" href="{{ $full }}" aria-label="查看{{ $label }}的定妆照大图" data-image-viewer data-label="{{ $label }}">
+        <img src="{{ $thumb }}" alt="{{ $label }}定妆照" loading="lazy" decoding="async" width="480" height="600">
+        <span class="character__zoom" aria-hidden="true">查看大图 ↗</span>
+      </a>
+      <figcaption><span>{{ .name }}</span>{{ with .era }}<small>{{ . }}</small>{{ end }}</figcaption>
+    </figure>
+    {{ end }}
+  </div>
+  <dialog class="portrait-viewer" aria-labelledby="portrait-viewer-title">
+    <div class="portrait-viewer__bar">
+      <span id="portrait-viewer-title" aria-live="polite"></span>
+      <button type="button" class="portrait-viewer__close" aria-label="关闭大图">×</button>
+    </div>
+    <div class="portrait-viewer__stage">
+      <img class="portrait-viewer__image" alt="">
+      <nav class="portrait-viewer__nav" aria-label="人物照片切换" hidden>
+        <button type="button" class="portrait-viewer__previous" aria-label="上一张人物照片">‹</button>
+        <button type="button" class="portrait-viewer__next" aria-label="下一张人物照片">›</button>
+      </nav>
+    </div>
+    <div class="portrait-viewer__count" aria-live="polite"></div>
+  </dialog>
 </section>
 
 <section class="toc-section" id="toc">

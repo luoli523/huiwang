@@ -15,7 +15,7 @@ disableKinds = ['taxonomy', 'term']
 [params]
   author = 'luoli523'
   subtitle = '2005，北京，一间十平米的考研屋'
-  cover = 'images/cover-your-wedding.jpg'
+  cover = 'images/cover-huiwang-v5.webp'
   description = '一部关于2005年北京、北河沿考研屋与一群年轻人的长篇小说。'
   # 右下角背景音乐，默认不播放，需手动点亮
   bgm = 'music/background.mp3?v=ADvyiXJOS-s'

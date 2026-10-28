@@ -88,5 +88,9 @@ if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';d.data
 
 {{ $js := resources.Get "js/reader.js" | resources.Minify | resources.Fingerprint }}
 <script src="{{ $js.RelPermalink }}" defer data-index="{{ "index.json" | relURL }}"></script>
+{{ if .IsHome }}
+{{ $gallery := resources.Get "js/characters.js" | resources.Minify | resources.Fingerprint }}
+<script src="{{ $gallery.RelPermalink }}" defer></script>
+{{ end }}
 </body>
 </html>
