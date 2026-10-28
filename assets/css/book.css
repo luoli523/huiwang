@@ -877,3 +877,11 @@ a.chapnav__item:hover { border-color: var(--lamp); background: var(--lamp-wash);
 }
 @media (max-width: 700px) { .characters__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 @media (max-width: 480px) { .characters__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* 视频与有声朗读分开展示 */
+.chapter-media-title { margin: 0 0 .65rem; font: 600 .95rem/1.6 var(--sans); color: var(--ink); }
+.chapter-video { margin: 0 0 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--rule); }
+.chapter-video__note { margin: 0 0 .8rem; color: var(--ink-soft); font: .8rem/1.6 var(--sans); }
+.chapter-video video { display: block; width: 100%; aspect-ratio: 16 / 9; background: #111; border-radius: 3px; }
+.chapter-video video:focus-visible { outline: 2px solid var(--lamp-deep); outline-offset: 3px; }
+@media print { .chapter-video, .chapter-media-title { display: none; } }

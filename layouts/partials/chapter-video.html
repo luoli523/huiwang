@@ -1,0 +1,10 @@
+{{ with index site.Data.video (printf "%d" .Weight) }}
+<section class="chapter-video" aria-labelledby="chapter-video-title">
+  <h2 id="chapter-video-title" class="chapter-media-title">AI 剧 · 无旁白视频</h2>
+  <p class="chapter-video__note" id="chapter-video-note">{{ .duration }} · 画面与文字叙事，配乐及场景声音</p>
+  <video id="chapter-video" controls playsinline preload="none" poster="{{ .poster | relURL }}" aria-labelledby="chapter-video-title" aria-describedby="chapter-video-note">
+    <source src="{{ .src | relURL }}" type="video/mp4">
+    <a href="{{ .src | relURL }}">打开本章视频</a>
+  </video>
+</section>
+{{ end }}

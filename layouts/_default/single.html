@@ -21,7 +21,10 @@
     <div class="chapter__rule" aria-hidden="true">❖</div>
   </header>
 
-  {{ if $isChapter }}{{ partial "chapter-audio.html" . }}{{ end }}
+  {{ if $isChapter }}
+    {{ partial "chapter-video.html" . }}
+    {{ partial "chapter-audio.html" . }}
+  {{ end }}
 
   <div class="chapter__body prose">
     {{ .Content }}

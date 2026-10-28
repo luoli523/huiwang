@@ -8,6 +8,7 @@
   {{ end }}
 {{ end }}
 {{ $playlistFile := resources.FromString "audio/playlist.json" ($playlist | jsonify) }}
+<p class="chapter-media-title">有声朗读</p>
 <div class="chapter-audio" id="listen" data-revision="{{ .revision }}" data-chapter="{{ $ctx.Weight }}" data-title="{{ $ctx.Title }}" data-playlist="{{ $playlistFile.RelPermalink }}">
   <p class="chapter-audio__episode" id="narration-episode" hidden aria-live="polite"><a id="narration-episode-link"></a></p>
   <button type="button" id="btn-narration" aria-pressed="false" aria-label="播放本章" title="guige 声音 · AI 朗读 · {{ .duration }}">

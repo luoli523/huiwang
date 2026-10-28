@@ -213,6 +213,15 @@
 
   /* ------------------------------------------------------ 本章朗读 */
   var narration = $('#chapter-narration');
+  var chapterVideo = $('#chapter-video');
+  if (chapterVideo) {
+    chapterVideo.addEventListener('play', function () {
+      if (narration) narration.pause();
+      if (audio) audio.pause();
+    });
+    if (narration) narration.addEventListener('play', function () { chapterVideo.pause(); });
+    if (audio) audio.addEventListener('play', function () { chapterVideo.pause(); });
+  }
   if (narration) {
     var panel = $('#listen'), listenButton = $('#btn-narration');
     var currentEpisode = Number(panel.dataset.chapter), advancing = false, autoNext = true;
