@@ -1,27 +1,38 @@
 # 唐晚 · 角色视觉资料
 
-本目录仅保留用户采用的单幅形象及据此制作的配套多角度稿。
-单幅形象为首要外观基准；多角度稿用于镜头参考，新增侧面、背面和未露出的服装结构仍需逐镜复核。
+当前参考已统一补入原型特征：**本人左眼外眼角稍上方、眉尾下方的一颗小圆黑痣**。2026-10-28 用户明确位置并认可大学单幅，继而要求同步中学版及两套多角度图。
+
+| 阶段 | 当前单幅 | 当前多角度参考 |
+| --- | --- | --- |
+| 中学 | [tangwan-school-look-v2.png](tangwan-school-look-v2.png) | [tangwan-school-turnaround-v2.png](tangwan-school-turnaround-v2.png) |
+| 大学 | [tangwan-university-look-v3.png](tangwan-university-look-v3.png) | [tangwan-university-turnaround-v2.png](tangwan-university-turnaround-v2.png) |
+
+单幅为五官、神态和小痣位置的首要参考。中学、大学两套单幅与多角度修订图均已获用户确认，作为后续分镜参考，使用前仍需逐视角核对一致性。
 
 ## 中学版本
 
-- 单幅形象：[tangwan-school-look-v1.png](tangwan-school-look-v1.png)（用户已采用）。
-- 多角度参考：[tangwan-school-turnaround-v1.png](tangwan-school-turnaround-v1.png)（四个全身角度、三个头部角度）。
-- 特征：短学生头与额前刘海、安静文秀；蓝白校服、白色运动鞋；无痣。
-
-- 提示词：[tangwan-school-look-v1-prompt.txt](tangwan-school-look-v1-prompt.txt)。
-- 提示词：[tangwan-school-turnaround-v1-prompt.txt](tangwan-school-turnaround-v1-prompt.txt)。
+- 短学生头、额前刘海、安静文秀；蓝白运动校服、深蓝长裤、白色运动鞋。
+- 当前单幅提示词：[tangwan-school-look-v2-prompt.txt](tangwan-school-look-v2-prompt.txt)。
+- 当前多角度提示词：[tangwan-school-turnaround-v2-prompt.txt](tangwan-school-turnaround-v2-prompt.txt)。
 
 ## 大学版本
 
-- 单幅形象：[tangwan-university-look-v1.png](tangwan-university-look-v1.png)（用户已采用）。
-- 多角度参考：[tangwan-university-turnaround-v1.png](tangwan-university-turnaround-v1.png)（四个全身角度、三个头部角度）。
-- 特征：黑色长发、温柔恬静；浅蓝连衣裙、白色帆布鞋；采用最初无痣版本。
+- 黑色长发、温柔恬静；浅蓝连衣裙、白色帆布鞋。
+- 当前单幅提示词：[tangwan-university-look-v3-prompt.txt](tangwan-university-look-v3-prompt.txt)。
+- 当前多角度提示词：[tangwan-university-turnaround-v2-prompt.txt](tangwan-university-turnaround-v2-prompt.txt)。
 
-- 提示词：[tangwan-university-look-v1-prompt.txt](tangwan-university-look-v1-prompt.txt)。
-- 提示词：[tangwan-university-turnaround-v1-prompt.txt](tangwan-university-turnaround-v1-prompt.txt)。
+## 小痣与视角规则
 
-## 后续使用
+- 小痣固定在人物本人左侧，正面时对应画面右侧。
+- 位置以当前单幅的眼角、眉尾与太阳穴关系为准，跨年龄按面部比例调整，不能复制整幅画面的绝对坐标。
+- 正面和露出本人左眼外侧的四分之三视角可见；画面朝左、展示本人右侧的侧面图中，小痣在远侧被遮挡，不应镜像补到近侧。
+- 背面不显示小痣；全身远景的小痣按头部尺寸缩小，不应与头部特写画成相同像素大小。
+- 只有一颗圆黑痣，不是双点、短线或成片雀斑。
 
-生成镜头时实际传入相应参考图，选择最接近目标镜头的角度；特写检查五官，全景检查身形与服装。表情、动作、俯仰角按分镜需要增补。多人同框时另行统一相对身高。
-后续修改新建版本，不覆盖已采用图。原始真人照片不在本目录。
+## 后续使用与版本
+
+按镜头选择对应年龄、最接近目标角度的参考图；特写核对五官与小痣，全景核对体态和服装。多人同框另行统一相对身高。
+
+原单幅 v1、原多角度 v1 为无痣历史版本，已被当前版本替代，不再作为默认镜头参考。保留已提交文件用于追溯，不覆盖旧图。原始真人照片不在本目录。
+
+本次修订通过内置图像生成工具完成，原图及完整提示词已存入项目；用户于 2026-10-28 确认并要求提交推送。

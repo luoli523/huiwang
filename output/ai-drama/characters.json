@@ -24,24 +24,26 @@
   {
     "character": "唐晚",
     "age_version": "中学",
-    "approved_portrait": "characters/tangwan/tangwan-school-look-v1.png",
-    "turnaround_reference": "characters/tangwan/tangwan-school-turnaround-v1.png",
-    "traits": "短学生头与额前刘海、安静文秀；蓝白校服、白色运动鞋；无痣。",
+    "approved_portrait": "characters/tangwan/tangwan-school-look-v2.png",
+    "turnaround_reference": "characters/tangwan/tangwan-school-turnaround-v2.png",
+    "traits": "短学生头与额前刘海、安静文秀；蓝白校服、白色运动鞋；本人左眼外眼角稍上方有一颗小圆黑痣。",
     "prompts": [
-      "characters/tangwan/tangwan-school-look-v1-prompt.txt",
-      "characters/tangwan/tangwan-school-turnaround-v1-prompt.txt"
-    ]
+      "characters/tangwan/tangwan-school-look-v2-prompt.txt",
+      "characters/tangwan/tangwan-school-turnaround-v2-prompt.txt"
+    ],
+    "turnaround_note": "已同步左眼外眼角稍上方小圆黑痣；本人右侧面和背面不显示远侧小痣，使用前逐镜核对。"
   },
   {
     "character": "唐晚",
     "age_version": "大学",
-    "approved_portrait": "characters/tangwan/tangwan-university-look-v1.png",
-    "turnaround_reference": "characters/tangwan/tangwan-university-turnaround-v1.png",
-    "traits": "黑色长发、温柔恬静；浅蓝连衣裙、白色帆布鞋；采用最初无痣版本。",
+    "approved_portrait": "characters/tangwan/tangwan-university-look-v3.png",
+    "turnaround_reference": "characters/tangwan/tangwan-university-turnaround-v2.png",
+    "traits": "黑色长发、温柔恬静；浅蓝连衣裙、白色帆布鞋；本人左眼外眼角稍上方有一颗小圆黑痣。",
     "prompts": [
-      "characters/tangwan/tangwan-university-look-v1-prompt.txt",
-      "characters/tangwan/tangwan-university-turnaround-v1-prompt.txt"
-    ]
+      "characters/tangwan/tangwan-university-look-v3-prompt.txt",
+      "characters/tangwan/tangwan-university-turnaround-v2-prompt.txt"
+    ],
+    "turnaround_note": "已同步左眼外眼角稍上方小圆黑痣；本人右侧面和背面不显示远侧小痣，使用前逐镜核对。"
   },
   {
     "character": "王晓斌",

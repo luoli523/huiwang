@@ -6,8 +6,8 @@
 | --- | --- | --- | --- |
 | [李礼](characters/lili/README.md) | 成年 | [查看](characters/lili/lili-look-v2.png) | [查看](characters/lili/lili-turnaround-v2.png) |
 | [李礼](characters/lili/README.md) | 中学 | [查看](characters/lili/lili-school-look-v5.png) | [查看](characters/lili/lili-school-turnaround-v2.png) |
-| [唐晚](characters/tangwan/README.md) | 中学 | [查看](characters/tangwan/tangwan-school-look-v1.png) | [查看](characters/tangwan/tangwan-school-turnaround-v1.png) |
-| [唐晚](characters/tangwan/README.md) | 大学 | [查看](characters/tangwan/tangwan-university-look-v1.png) | [查看](characters/tangwan/tangwan-university-turnaround-v1.png) |
+| [唐晚](characters/tangwan/README.md) | 中学 | [查看](characters/tangwan/tangwan-school-look-v2.png) | [查看](characters/tangwan/tangwan-school-turnaround-v2.png) |
+| [唐晚](characters/tangwan/README.md) | 大学 | [查看](characters/tangwan/tangwan-university-look-v3.png) | [查看](characters/tangwan/tangwan-university-turnaround-v2.png) |
 | [徐皙](characters/xuxi/README.md) | 大学 | [查看](characters/xuxi/xuxi-look-v3.png) | [查看](characters/xuxi/xuxi-turnaround-v1.png) |
 | [吴彬](characters/wubin/README.md) | 成年 | [查看](characters/wubin/wubin-look-v2.png) | [查看](characters/wubin/wubin-turnaround-v1.png) |
 | [王晓斌](characters/wangxiaobin/README.md) | 成年 | [查看](characters/wangxiaobin/wangxiaobin-look-v1.png) | [查看](characters/wangxiaobin/wangxiaobin-turnaround-v1.png) |
