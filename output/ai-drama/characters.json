@@ -123,12 +123,14 @@
   {
     "character": "李礼",
     "age_version": "中学",
-    "approved_portrait": "characters/lili/lili-school-look-v4.png",
-    "turnaround_reference": "characters/lili/lili-school-turnaround-v1.png",
-    "traits": "约十四岁，清瘦少年身形、窄肩、细长眉眼与成年版唇形关联；稍短的自然偏分黑发、机灵调皮的笑意；与唐晚中学版相同蓝白校服、深蓝白侧条长裤、白色运动鞋。",
+    "approved_portrait": "characters/lili/lili-school-look-v5.png",
+    "turnaround_reference": "characters/lili/lili-school-turnaround-v2.png",
+    "traits": "约十四岁，清瘦窄肩，柔和少年脸型、自然偏分黑发；正视镜头、轻微闭口笑；蓝白校服、深蓝白侧条长裤、白色运动鞋。单幅采用正视坐姿 v5，转面用自然站姿；调皮和侧目按具体场景另行表演。",
     "prompts": [
-      "characters/lili/lili-school-look-v4-prompt.txt",
-      "characters/lili/lili-school-turnaround-v1-prompt.txt"
-    ]
+      "characters/lili/lili-school-look-v5-prompt.txt",
+      "characters/lili/lili-school-turnaround-v2-prompt.txt"
+    ],
+    "portrait_status": "用户指定正视坐姿 v5 为最终单幅定稿",
+    "turnaround_note": "根据最终单幅 v5 重做中性转面；视线随头部朝向，不将侧目、露齿笑固定为身份特征。"
   }
 ]
