@@ -13,5 +13,10 @@
     "src": "video/chapter-03.mp4",
     "poster": "video/chapter-03-poster.jpg",
     "duration": "4:30"
+  },
+  "4": {
+    "src": "video/chapter-04.mp4",
+    "poster": "video/chapter-04-poster.jpg",
+    "duration": "4:30"
   }
 }
