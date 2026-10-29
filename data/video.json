@@ -5,9 +5,9 @@
     "duration": "4:22"
   },
   "2": {
-    "src": "video/chapter-02.mp4",
-    "poster": "video/chapter-02-poster.jpg",
-    "duration": "4:30"
+    "src": "video/chapter-02.mp4?v=3",
+    "poster": "video/chapter-02-poster.jpg?v=3",
+    "duration": "4:24"
   },
   "3": {
     "src": "video/chapter-03.mp4",
