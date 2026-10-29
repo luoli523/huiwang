@@ -10,9 +10,9 @@
     "duration": "4:24"
   },
   "3": {
-    "src": "video/chapter-03.mp4",
-    "poster": "video/chapter-03-poster.jpg",
-    "duration": "4:30"
+    "src": "video/chapter-03.mp4?v=2",
+    "poster": "video/chapter-03-poster.jpg?v=2",
+    "duration": "4:11"
   },
   "4": {
     "src": "video/chapter-04.mp4",
