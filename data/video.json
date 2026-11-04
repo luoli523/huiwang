@@ -60,8 +60,8 @@
     "duration": "4:30"
   },
   "13": {
-    "src": "video/chapter-13.mp4",
+    "src": "video/chapter-13.mp4?v=3",
     "poster": "video/chapter-13-poster.jpg",
-    "duration": "5:20"
+    "duration": "5:11"
   }
 }
